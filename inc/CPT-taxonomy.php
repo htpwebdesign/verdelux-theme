@@ -185,13 +185,60 @@ function vdx_register_custom_post_types()
       'query_var'          => true,
       'rewrite'            => array('slug' => 'careers'),
       'capability_type'    => 'post',
-      'has_archive'        => true,
+      'has_archive'        => false,
       'hierarchical'       => false,
-      'menu_position'      => 5,
+      'menu_position'      => 6,
       'menu_icon'          => 'dashicons-businessman',
-      'supports'           => array('title', 'editor', 'thumbnail'),
+      'supports'           => array('title'),
    );
    register_post_type('vdx-career', $args);
+
+   // Locations CPT
+   $labels = array(
+      'name'                  => _x('Locations', 'post type general name'),
+      'singular_name'         => _x('Location', 'post type singular name'),
+      'menu_name'             => _x('Locations', 'admin menu'),
+      'name_admin_bar'        => _x('Location', 'add new on admin bar'),
+      'add_new'               => _x('Add New', 'Location'),
+      'add_new_item'          => __('Add New Location'),
+      'new_item'              => __('New Location'),
+      'edit_item'             => __('Edit Location'),
+      'view_item'             => __('View Location'),
+      'all_items'             => __('All Locations'),
+      'search_items'          => __('Search Locations'),
+      'parent_item_colon'     => __('Parent Locations:'),
+      'not_found'             => __('No Locations found.'),
+      'not_found_in_trash'    => __('No Locations found in Trash.'),
+      'archives'              => __('Locations Archives'),
+      'insert_into_item'      => __('Insert into Location'),
+      'uploaded_to_this_item' => __('Uploaded to this Location'),
+      'filter_item_list'      => __('Filter Locations list'),
+      'items_list_navigation' => __('Locations list navigation'),
+      'items_list'            => __('Locations list'),
+      'featured_image'        => __('Locations featured image'),
+      'set_featured_image'    => __('Set Locations featured image'),
+      'remove_featured_image' => __('Remove Locations featured image'),
+      'use_featured_image'    => __('Use as featured image'),
+   );
+   $args = array(
+      'labels'             => $labels,
+      'public'             => true,
+      'publicly_queryable' => true,
+      'show_ui'            => true,
+      'show_in_menu'       => true,
+      'show_in_nav_menus'  => true,
+      'show_in_admin_bar'  => true,
+      'show_in_rest'       => true,
+      'query_var'          => true,
+      'rewrite'            => array('slug' => 'locations'),
+      'capability_type'    => 'post',
+      'has_archive'        => false,
+      'hierarchical'       => false,
+      'menu_position'      => 4,
+      'menu_icon'          => 'dashicons-location',
+      'supports'           => array('title'),
+   );
+   register_post_type('vdx-location', $args);
 
 
    // Testimonials CPT
@@ -270,7 +317,7 @@ function vdx_register_taxonomies()
       'query_var'         => true,
       'rewrite'           => array('slug' => 'location-category'),
    );
-   register_taxonomy('vdx-location-category', array('vdx-team', 'vdx-career'), $args);
+   register_taxonomy('vdx-location-category', array('vdx-location','vdx-team', 'vdx-career'), $args);
 
    // Menu Taxonomy
    $labels = array(

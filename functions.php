@@ -188,5 +188,48 @@ require get_template_directory() . '/inc/CPT-taxonomy.php';
 
 // ** Custom Post Types **
 
+// Edit Placeholder Text Section
 
+// Change 'Add Title' placeholder text to 'Add Menu Item Title'
+function vdx_change_menu_item_title($title, $post_type) {
+	if ('vdx-menu-item' === get_post_type() ) {
+		return __('Add Menu Item Title', 'textdomain');
+	}
+	return $title;
+}
+add_filter('enter_title_here', 'vdx_change_menu_item_title', 10, 2);
+
+// Change 'Add Title' placeholder text to 'Add Team Member Name'
+function vdx_change_team_member_name($title, $post_type) {
+	if ('vdx-team' === get_post_type() ) {
+		return __('Add Team Member Name', 'textdomain');
+	}
+	return $title;
+}
+add_filter('enter_title_here', 'vdx_change_team_member_name', 10, 2);
+
+// Change 'Add Title' placeholder text to 'Add Event Title'
+function vdx_change_event_title($title, $post_type) {
+	if ('vdx-events' === get_post_type() ) {
+		return __('Add Event Title', 'textdomain');
+	}
+	return $title;
+}
+add_filter('enter_title_here', 'vdx_change_event_title', 10, 2);
+
+function vdx_change_career_title($title, $post_type) {
+	if ('vdx-career' === get_post_type() ) {
+		return __('Add Job Post Title', 'textdomain');
+	}
+	return $title;
+}
+add_filter('enter_title_here', 'vdx_change_career_title', 10, 2);
+
+function vdx_change_testimonial_title($title, $post_type) {
+	if ('vdx-testimonial' === get_post_type() ) {
+		return __('Add Customer Name', 'textdomain');
+	}
+	return $title;
+}
+add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
 
