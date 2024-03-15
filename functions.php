@@ -52,6 +52,9 @@ function verdelux_theme_setup()
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'verdelux-theme'),
+		),
+		array(
+			'menu-2' => esc_html__('Secondary', 'Verdelux-theme')
 		)
 	);
 
@@ -147,12 +150,36 @@ function verdelux_theme_scripts()
 	wp_style_add_data('verdelux-theme-style', 'rtl', 'replace');
 
 	wp_enqueue_script('verdelux-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
-
+	wp_enqueue_script('verdelux-theme-scripts', get_template_directory_uri() . '/js/scripts.js', array(), _S_VERSION);
+	wp_enqueue_script('google-maps', get_template_directory_uri() . '/js/googleMaps.js', array(), '1.0.0', true);
+	
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
 }
 add_action('wp_enqueue_scripts', 'verdelux_theme_scripts');
+
+
+
+
+
+
+
+
+
+
+
+// Add google api key for ACF
+
+function google_api_acf_init($api)
+{
+
+	$api['key'] = 'AIzaSyAgKjLxZAbjdoqpa8zcmIMhu53vA6h9xYU';
+	return $api;
+}
+add_filter('acf/fields/google_map/api', 'google_api_acf_init');
+
+
 
 /**
  * Implement the Custom Header feature.
@@ -175,8 +202,19 @@ require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/customizer.php';
 
 /**
+ * Gravity form select option field values function
+ * */
+require get_template_directory() . '/inc/job-selection-function.php';
+
+/**
+ * Google Maps Template Part 
+ */
+require get_template_directory() . '/inc/googleMaps.php';
+
+/**
  * Load Jetpack compatibility file.
  */
+
 if (defined('JETPACK__VERSION')) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
@@ -191,8 +229,9 @@ require get_template_directory() . '/inc/CPT-taxonomy.php';
 // Edit Placeholder Text Section
 
 // Change 'Add Title' placeholder text to 'Add Menu Item Title'
-function vdx_change_menu_item_title($title, $post_type) {
-	if ('vdx-menu-item' === get_post_type() ) {
+function vdx_change_menu_item_title($title, $post_type)
+{
+	if ('vdx-menu-item' === get_post_type()) {
 		return __('Add Menu Item Title', 'textdomain');
 	}
 	return $title;
@@ -200,8 +239,9 @@ function vdx_change_menu_item_title($title, $post_type) {
 add_filter('enter_title_here', 'vdx_change_menu_item_title', 10, 2);
 
 // Change 'Add Title' placeholder text to 'Add Team Member Name'
-function vdx_change_team_member_name($title, $post_type) {
-	if ('vdx-team' === get_post_type() ) {
+function vdx_change_team_member_name($title, $post_type)
+{
+	if ('vdx-team' === get_post_type()) {
 		return __('Add Team Member Name', 'textdomain');
 	}
 	return $title;
@@ -209,27 +249,29 @@ function vdx_change_team_member_name($title, $post_type) {
 add_filter('enter_title_here', 'vdx_change_team_member_name', 10, 2);
 
 // Change 'Add Title' placeholder text to 'Add Event Title'
-function vdx_change_event_title($title, $post_type) {
-	if ('vdx-events' === get_post_type() ) {
+function vdx_change_event_title($title, $post_type)
+{
+	if ('vdx-events' === get_post_type()) {
 		return __('Add Event Title', 'textdomain');
 	}
 	return $title;
 }
 add_filter('enter_title_here', 'vdx_change_event_title', 10, 2);
 
-function vdx_change_career_title($title, $post_type) {
-	if ('vdx-career' === get_post_type() ) {
+function vdx_change_career_title($title, $post_type)
+{
+	if ('vdx-career' === get_post_type()) {
 		return __('Add Job Post Title', 'textdomain');
 	}
 	return $title;
 }
 add_filter('enter_title_here', 'vdx_change_career_title', 10, 2);
 
-function vdx_change_testimonial_title($title, $post_type) {
-	if ('vdx-testimonial' === get_post_type() ) {
+function vdx_change_testimonial_title($title, $post_type)
+{
+	if ('vdx-testimonial' === get_post_type()) {
 		return __('Add Customer Name', 'textdomain');
 	}
 	return $title;
 }
 add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
-
