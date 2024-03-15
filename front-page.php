@@ -20,8 +20,11 @@ get_header();
 		<?php
 		while ( have_posts() ) :
 			the_post();
+			
 
 			get_template_part( 'template-parts/content', 'page' );
+
+			
 
 			// If comments are open or we have at least one comment, load up the comment template.
 			if ( comments_open() || get_comments_number() ) :
@@ -31,8 +34,54 @@ get_header();
 		endwhile; // End of the loop.
 		?>
 
-	</main><!-- #main -->
+	<?php
+
+	$args = array(
+	'post_type' => 'vdx-location',
+	'posts_per_page' => -1
+	);
+	$location_query = new WP_Query($args);
+
+	if ($location_query->have_posts()) {
+	while ($location_query->have_posts()) {
+		$location_query->the_post();
+
+		// Get all the ACF fields for the post
+		$fields = get_fields();
+
+		foreach ($fields as $key => $value) {
+			$field_object = get_field_object($key);
+			$label = $field_object['label'];
+
+			if ($key === 'location_name_') {
+				echo '<h2>' . $value . '</h2>';
+			}
+
+			if($key === 'map_location'){
+			echo '<div id="map"></div>';
+			}
+
+			if ($key === 'address') {
+				echo '<p>' . $value . '</p>';
+			}
+
+			if ($key === 'phone_number_') {
+				echo '<p>' . $value . '</p>';
+			}
+
+			if ($key === 'email') {
+				echo '<a href="mailto:' . $value . '"> ' . $value . '</a>';
+			}
+		}
+	}
+}
+?>
+
+
+</main><!-- #main -->
+
+
 
 <?php
-get_sidebar();
+// get_sidebar();
 get_footer();
