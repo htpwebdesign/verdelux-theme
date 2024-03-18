@@ -31,7 +31,40 @@ get_header();
     endwhile; // End of the loop.
     ?>
 
+    <section class="about-section">
+        <?php
+
+        if ( function_exists( 'get_field' ) ) {
+            if ( get_field('banner_text') ) {
+            the_field('banner_text');
+             }
+         }
+
+         // Initialize variables to store image data
+         $chef_image = get_field('chef_photo');
+         $image_output = '';
+
+         echo '<br>';
+
+         if ($chef_image) {
+            $size = 'large';
+            $chef_image_output = wp_get_attachment_image($chef_image, $size);
+            echo $chef_image_output; // Output the image
+        }
+
+        echo '<br>';
+        
+            if ( get_field('about_restuarant_') ) {
+            the_field('about_restuarant_');
+             }
+
+        ?>
+    </section>
+
 	<section class="location-section">
+        
+    <h2>Locations</h2>
+
     <?php
     $args = array(
         'post_type'      => 'vdx-location',
@@ -63,7 +96,7 @@ get_header();
                 $label = $field_object['label'];
 
                 if ($key === 'location_name_') {
-                    echo '<h2>' . $value . '</h2>';
+                    echo '<h3>' . $value . '</h3>';
                 }
 
                 if ($key === 'address') {
@@ -89,7 +122,7 @@ get_header();
 	</section>
 
 	<section class="testimonials">
-		<h2>Testimonials</h2>
+		<h3>Testimonials</h3>
 
 		<section class="instagram-feed">
 			<h3>Instagram</h3>
