@@ -33,13 +33,7 @@ get_header();
 
     <section class="about-section">
         <?php
-
-        if ( function_exists( 'get_field' ) ) {
-            if ( get_field('banner_text') ) {
-            the_field('banner_text');
-             }
-         }
-
+        
          // Initialize variables to store image data
          $chef_image = get_field('chef_photo');
          $image_output = '';
