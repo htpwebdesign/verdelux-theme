@@ -51,7 +51,7 @@ get_header();
 			if ($career_post_query->have_posts()) :
 				while ($career_post_query->have_posts()) : $career_post_query->the_post();
 					$description = get_field('description');
-					$excerpt = substr($description, 0, 0);
+					// $excerpt = substr($description, 0, 10);
 
 					// Location taxonomy
 					$locations = get_the_terms(get_the_ID(), 'vdx-location-category');
@@ -68,8 +68,7 @@ get_header();
 					echo '<article>';
 					echo '<h3> Position: ' . get_field('job_listing') . '</h3>';
 					echo '<p>Location: ' . $location_list . '</p>';
-					// echo '<p>' . the_field('description') . '</p>';
-					'<p class="job-description" data-full="' . $description . '">' . $excerpt . '</p>';
+					echo '<div class="job-description " style="display: none">' . $description . '</div>';
 					echo '<button class="view-more"> View Job Posting</button>';
 					echo '</article>';
 

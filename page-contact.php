@@ -47,12 +47,27 @@ get_header();
 					echo '<h2>' . $value . '</h2>';
 				}
 
-				if($key === 'map_location'){
-				echo '<div id="map"></div>';
+				if ($key === 'map_location') {
+
+					$location = get_field('map_location');
+					if ($location) {
+
+						echo '<div class="acf-map" data-zoom="16">';
+						echo '<div class="marker" data-lat="' . esc_attr($location['lat']) . '" data-lng="' . esc_attr($location['lng']) . '"></div>';
+						echo '</div>';
+					}
 				}
 
 				if ($key === 'address') {
 					echo '<p>' . $value . '</p>';
+				}
+
+				if ($key === 'hours') {
+					if ( is_array($value)) {
+						foreach ($value as $dayTime) {
+							echo '<p>' . $dayTime['day'] . ' ' . $dayTime['time_'] . '</p>';
+						}
+					}
 				}
 
 				if ($key === 'phone_number_') {
@@ -65,16 +80,6 @@ get_header();
 			}
 		}
 	}
-
-	// if ($location_query->have_posts()) {
-	// 	while ($location_query->have_posts()) {
-	// 		$location_query->the_post();
-
-	// 		$location_title = get_field('location_title');
-	// 		echo '<h2>' . $location_title . '</h2>';
-	// 	}
-	// 	wp_reset_postdata();
-	// }
 	?>
 
 
