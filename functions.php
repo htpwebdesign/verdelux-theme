@@ -52,8 +52,6 @@ function verdelux_theme_setup()
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'verdelux-theme'),
-			'footer-left' => esc_html__('Footer - Left Side', 'verdelux-theme'),
-			'footer-right' => esc_html__('Footer - Right Side', 'verdelux-theme'),
 		)
 	);
 
@@ -157,15 +155,6 @@ function verdelux_theme_scripts()
 	}
 }
 add_action('wp_enqueue_scripts', 'verdelux_theme_scripts');
-
-
-
-
-
-
-
-
-
 
 
 // Add google api key for ACF

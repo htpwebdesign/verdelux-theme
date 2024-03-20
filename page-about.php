@@ -22,16 +22,16 @@ get_header();
 				the_post();
 				get_template_part( 'template-parts/content', 'page' );
 		?>
-		
+
+		<?php the_content(); ?>
+
 		<section class="about-chef">
 			
 			<?php
 				if (function_exists( 'get_field' )) {
 
 					if ( get_field( 'title' ) ) {
-						echo '<h1>';
-							the_field( 'title' );
-						echo '</h1>';
+						echo '<h1>' . get_field( 'title' ) . '</h1>'; 
 					}
 					
 					if (get_field('chef_image') ) {
@@ -42,93 +42,87 @@ get_header();
 					}
 					
 					if ( get_field( 'chef_about' ) ) {
-						echo '<p>';
-							the_field( 'chef_about' );
-						echo '</p>';
+						echo '<p>' . get_field( 'chef_about' ) . '</p>';	
 					}
 
 					//output Team header title 
 					if ( get_field( 'team_text' ) ) {
-						echo '<h2>';
-							the_field( 'team_text' );
-						echo '</h2>';
+						echo '<h2>' . get_field( 'team_text' ) . '</h2>';
 					}
 				}
 			?>
 		</section>
 
 		<section class="about-team">
+			<div class="filter-tabs">
+				<ul>
+					<?php
+						//display filter tabs for Brisbane and Gold Coast
+						$locations = array('brisbane', 'gold-coast');
+						foreach ($locations as $location) {
+							echo '<li><a href="?location=' . $location . '">' . ucfirst(str_replace('-', ' ', $location)) . '</a></li>';
+						}
+					?>
+				</ul>
+			</div>
+			<div class="team-content">
 				<?php
-					$taxonomy = 'vdx-location-category';
-					$terms    = get_terms(
-						array(
-							'taxonomy' => $taxonomy
-						)
+					//default to Brisbane location on intial page load
+    				$location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : 'brisbane';
+
+					//display team members based on the selected location
+					$args = array(	
+						'post_type'      => 'vdx-team',
+						'posts_per_page' => -1,
+						'order'          => 'ASC',
+						'orderby'        => 'title',
+						'tax_query'      => array(
+							array(
+								'taxonomy' => 'vdx-location-category',
+								'field'    => 'slug',
+								'terms'    => $location,
+							)
+						),
 					);
-					if($terms && ! is_wp_error($terms) ){
-						foreach($terms as $term){
-							$args = array(	
-								'post_type'      => 'vdx-team',
-								'posts_per_page' => -1,
-								'order'          => 'ASC',
-								'orderby'        => 'title',
-								'tax_query'      => array(
-									array(
-										'taxonomy' => $taxonomy,
-										'field'    => 'slug',
-										'terms'    => $term->slug,
-									)
-								),
-							);
-							$query = new WP_Query( $args );
+					$query = new WP_Query( $args );
 
-							if ( $query -> have_posts() ) {
-								//Output Term name. (locations: Brisbane or Gold Coast)
-								echo '<h2>' . esc_html( $term->name ) . '</h2>';
-								
-								//wp_reset_postdata();
+					if ( $query->have_posts() ) {
+						//output Term name (locations: Brisbane or Gold Coast) *REMOVE THIS LINE ONCE FILTER TABS R WORKING*
+						echo '<h2>' . ucfirst(str_replace('-', ' ', $location)) . '</h2>';
 
-								// Output Content.
-								while ( $query -> have_posts() ) {
-									$query -> the_post();
-									
-									if ( function_exists( 'get_field' ) ) {
-										
-										//team member image
-										if (get_field('member_image_') ) {
-											echo wp_get_attachment_image(
-												get_field( 'member_image_' ), 'medium'
-											);
-										}
-
-										//team member name
-										echo '<h3>' . esc_html(get_the_title()) . '</h3>';
-										
-										// job title 
-										/*if ( get_field( 'position' ) ) {
-											echo '<p>';
-												the_field( 'position' );
-											echo '</p>';
-										}*/
-										if (get_field('position')) {
-											echo '<p>' . esc_html(get_field('position')) . '</p>';
-										}
-									}
+						// output Content
+						while ( $query->have_posts() ) {
+							$query->the_post();
+                        
+                        	if ( function_exists( 'get_field' ) ) {
+								//output team member image
+								if (get_field('member_image_') ) {
+									echo wp_get_attachment_image(
+										get_field( 'member_image_' ), 'medium'
+									);
 								}
-								wp_reset_postdata();
+
+								//output team member name
+								echo '<h3>' . esc_html(get_the_title()) . '</h3>';
+
+								//output job title 
+								if (get_field('position')) {
+									echo '<p>' . esc_html(get_field('position')) . '</p>';
+								}
 							}
 						}
+						wp_reset_postdata();
+					} else {
+						echo 'No team members at this location';
 					}
+
 				?>
+			</div>
 		</section>
         
 		<?php
-			endwhile; // End of the loop.
+			endwhile; // end of the loop
 		?>
-
-
 	</main><!-- #main -->
-
 <?php
-get_sidebar();
 get_footer();
