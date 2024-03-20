@@ -36,8 +36,7 @@ get_header();
 					
 					if (get_field('chef_image') ) {
 						echo wp_get_attachment_image(
-							get_field( 'chef_image' ),
-							'medium', '', array( 'class' => 'alignleft')
+							get_field( 'chef_image' ),'medium'
 						);
 					}
 					

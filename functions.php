@@ -139,10 +139,24 @@ function verdelux_theme_widgets_init()
 add_action('widgets_init', 'verdelux_theme_widgets_init');
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue scripts and styles. 
  */
 function verdelux_theme_scripts()
 {
+	wp_enqueue_style(
+		'verdelux-textfont', //custom text from google fonts
+		'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap',
+		array(), 
+		null
+	); 
+
+	wp_enqueue_style(
+		'verdelux-headerfont', //custom header text 
+		'https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap',
+		array(), 
+		null
+	); 
+
 	wp_enqueue_style('verdelux-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('verdelux-theme-style', 'rtl', 'replace');
 
