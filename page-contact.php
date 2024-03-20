@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages
  *
@@ -15,24 +16,69 @@
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+	<?php
+	while (have_posts()) : the_post();
+		get_template_part('template-parts/content', 'page');
+	endwhile; // End of the loop.
+	?>
 
-			get_template_part( 'template-parts/content', 'page' );
+	<?php
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
-				comments_template();
-			endif;
+	$args = array(
+		'post_type' => 'vdx-location',
+		'posts_per_page' => -1
+	);
+	$location_query = new WP_Query($args);
 
-		endwhile; // End of the loop.
-		?>
+	if ($location_query->have_posts()) {
+		while ($location_query->have_posts()) {
+			$location_query->the_post();
 
-	</main><!-- #main -->
+			// Get all the ACF fields for the post
+			$fields = get_fields();
+
+			foreach ($fields as $key => $value) {
+				$field_object = get_field_object($key);
+				$label = $field_object['label'];
+
+				if ($key === 'location_name_') {
+					echo '<h2>' . $value . '</h2>';
+				}
+
+				if($key === 'map_location'){
+				echo '<div id="map"></div>';
+				}
+
+				if ($key === 'address') {
+					echo '<p>' . $value . '</p>';
+				}
+
+				if ($key === 'phone_number_') {
+					echo '<p>' . $value . '</p>';
+				}
+
+				if ($key === 'email') {
+					echo '<a href="mailto:' . $value . '"> ' . $value . '</a>';
+				}
+			}
+		}
+	}
+
+	// if ($location_query->have_posts()) {
+	// 	while ($location_query->have_posts()) {
+	// 		$location_query->the_post();
+
+	// 		$location_title = get_field('location_title');
+	// 		echo '<h2>' . $location_title . '</h2>';
+	// 	}
+	// 	wp_reset_postdata();
+	// }
+	?>
+
+
+</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

@@ -1,0 +1,19 @@
+@import "sass/abstracts/variables/colors";
+
+// Home page customization
+
+// Remove the title on the home page
+.post-18 {
+
+    h1 {
+        display: none;
+    }
+
+    p{
+        background-color: $text_bg_light;
+        color: #fff;
+        padding: 1rem;
+        width: 80%;
+    }
+
+}
