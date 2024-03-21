@@ -163,6 +163,16 @@ function verdelux_theme_scripts()
 	wp_enqueue_script('verdelux-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 	wp_enqueue_script('verdelux-theme-scripts', get_template_directory_uri() . '/js/scripts.js', array(), _S_VERSION);
 	wp_enqueue_script('google-maps', get_template_directory_uri() . '/js/googleMaps.js', array(), '1.0.0', true);
+
+	//slick carousel
+	wp_enqueue_style('slick-css' , get_template_directory_uri() . '/slick/slick.css');
+	wp_enqueue_script('slick-js', get_template_directory_uri() . '/slick/slick.js', array('jquery'), '1.0', true);
+	wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css');
+	wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery', 'slick-js'), '1.0', true);
+
+	//menu tab
+	wp_enqueue_script('menu-tab', get_template_directory_uri() . '/js/menu-tab.js');
+
 	
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
@@ -228,31 +238,8 @@ require get_template_directory() . '/inc/CPT-taxonomy.php';
 
 // ** Custom Post Types **
 
-/**
- * Enqueue Slick CSS
- */
-function enqueue_slick_styles() {
-    wp_enqueue_style('slick-css' , get_template_directory_uri() . '/slick/slick.css');
-}
-add_action('wp_enqueue_scripts', 'enqueue_slick_styles');
 
-function enqueue_slick_theme_styles() {
-    wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css');
-}
-add_action('wp_enqueue_scripts', 'enqueue_slick_styles');
 
-/**
- * Enqueue Slick JavaScript
- */
-function enqueue_slick_scripts() {
-    wp_enqueue_script('slick-js', get_template_directory_uri() . '/slick/slick.js', array('jquery'), '1.0', true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_slick_scripts');
-
-function enqueue_slick_custom() {
-    wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery', 'slick-js'), '1.0', true);
-}
-add_action('wp_enqueue_scripts', 'enqueue_slick_custom');
 // Edit Placeholder Text Section
 
 // Change 'Add Title' placeholder text to 'Add Menu Item Title'
@@ -303,10 +290,6 @@ function vdx_change_testimonial_title($title, $post_type)
 }
 add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
 
-//menu filters
-function enqueue_menu_tabs(){
-	wp_enqueue_script('menu-tab', get_template_directory_uri() . '/js/menu-tab.js');
-}
-	add_action('wp_enqueue_scripts', 'enqueue_menu_tabs');
+
 
 

@@ -28,59 +28,48 @@ get_header();
 				comments_template();
 			endif;
 
-		endwhile; // End of the loop.
+		// endwhile; // End of the loop.
 		?>
 		<div class="slick-carousel">
 			<?php
-			$image_ids = array(137, 139, 200);
+			$image_ids = get_field('banner_image_carousel');
+		
+			foreach ($image_ids as $image_id){
+				$image_html = wp_get_attachment_image($image_id, 'full');
 
-			//filter value from URL
-			$filter = isset($_GET['filter']) ? $_GET['filter'] : '';
-
-		        // Grab the filter value from the URL
-				$filter = isset($_GET['filter']) ? $_GET['filter'] : '';
-
-				foreach ($image_ids as $image_id) {
-					// Check if the image should be displayed based on the filter
-					if ($filter === '' || has_term($filter, 'vdx-menu-type', $image_id)) {
-						$image_url = wp_get_attachment_image_src($image_id, 'full');
-						if ($image_url) {
-							echo '<img src="' . $image_url[0] . '" alt="Image ' . $image_id . '">';
-						}
-					}
+				if($image_html){
+					?>
+					<div class="banner-image">
+						<?php echo $image_html; ?>
+					</div>
+					<?php
 				}
-			?>
-			
-			
-    	</div>
-		<div class="menu-tabs">
-			<a class="menu-tab" data-filter="chefs-special" id="chef-menu">Chef's Special</a>
-			<a class="menu-tab" data-filter="appetizers">Appetizers</a>
-			<a class="menu-tab" data-filter="soups-and-salads">Soups and Salads</a>
-			<a class="menu-tab" data-filter="pizza">Pizza</a>
-			<a class="menu-tab" data-filter="dessert">Dessert</a>
-			<div class="menu-dropdown">
-				<a class="menu-tab">Wines</a>
-				<div class="menu-dropdown-content">
-					<a class="menu-tab" data-filter="red-wines">Red Wines</a>
-					<a class="menu-tab" data-filter="white-wines">White Wines</a>
-				</div>
-			</div>
-		</div>
-		<!-- <div class="menu-tabs">
-		<?php
-		$terms = get_terms(array(
-			'taxonomy' => 'vdx-menu-type',
-			'hide_empty' => false, // Set to true if you want to hide empty terms
-		));
-
-		if ($terms && !is_wp_error($terms)) {
-			foreach ($terms as $term) {
-				echo '<a class="menu-tab" data-filter="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a>';
 			}
-		}
-		?>
-		</div> -->
+			?>
+			</div>
+		
+		<div class="menu-tabs">
+			<?php
+			$terms = get_terms(array(
+				'taxonomy' => 'vdx-menu-type',
+				'orderby' => 'meta_value_num',
+				'order'  => 'ASC',
+				'meta_key' => 'menu_order',
+				
+			));
+			foreach ($terms as $term){
+				
+					echo '<a class="menu-tab" data-filter="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a>';
+				}
+				
+			
+			
+			
+			
+			?>
+		
+		</div>
+		
 		
 		<?php
 		//allergen symbols legend
@@ -164,7 +153,9 @@ get_header();
 				
 			}
 		}
+		endwhile;
 		?>
+		
 
 	</main><!-- #main -->
 
