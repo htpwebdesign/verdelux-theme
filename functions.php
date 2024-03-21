@@ -299,3 +299,11 @@ function vdx_change_testimonial_title($title, $post_type)
 	return $title;
 }
 add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
+
+//menu filters
+function enqueue_menu_tabs(){
+	wp_enqueue_script('menu-tab', get_template_directory_uri() . '/js/menu-tab.js');
+}
+	add_action('wp_enqueue_scripts', 'enqueue_menu_tabs');
+
+
