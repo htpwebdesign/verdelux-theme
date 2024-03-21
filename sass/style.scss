@@ -80,12 +80,17 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Components
 --------------------------------------------------------------*/
 @import "components/components";
-@import "components/content/page-about";
-@import "components/content/page-careers"; 
-@import "components/content/page-community";
+@import "components/content/about-chef";
+@import "components/content/banner"; 
+@import "components/content/cards";
+@import "components/content/carousel";
+@import "components/content/footer";
+@import "components/content/grids";
+@import "components/content/header";
+@import "components/content/mobile-menu";
 @import "components/content/page-contact";
 @import "components/content/page-home";
-@import "components/content/page-menu";
+@import "components/content/testimonials";
 
 
 /*--------------------------------------------------------------
@@ -107,3 +112,4 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 /* Alignments
 --------------------------------------------- */
 @import "utilities/alignments";
+
