@@ -38,7 +38,7 @@ get_header();
         }
 
         if (get_field('about_restuarant_')) {
-            echo '<p>' . get_field('about_restuarant_') . '</p>';
+            the_field('about_restuarant_') ;
         }
         ?>
     </section>
