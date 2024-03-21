@@ -42,10 +42,9 @@ get_header();
             echo $chef_image_output; // Output the image
         }
 
-            if ( get_field('about_restuarant_') ) {
-            the_field('about_restuarant_');
-             }
-
+        if (get_field('about_restuarant_')) {
+            echo '<p>' . get_field('about_restuarant_') . '</p>';
+        }
         ?>
     </section>
 
