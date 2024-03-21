@@ -52,6 +52,8 @@ function verdelux_theme_setup()
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'verdelux-theme'),
+			'footer-left' => esc_html__('Footer - Left Side', 'verdelux-theme'),
+			'footer-right' => esc_html__('Footer - Right Side', 'verdelux-theme'),
 		)
 	);
 
@@ -144,15 +146,8 @@ add_action('widgets_init', 'verdelux_theme_widgets_init');
 function verdelux_theme_scripts()
 {
 	wp_enqueue_style(
-		'verdelux-textfont', //custom text from google fonts
-		'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap',
-		array(), 
-		null
-	); 
-
-	wp_enqueue_style(
-		'verdelux-headerfont', //custom header text 
-		'https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap',
+		'verdelux-textfont', //custom texts from google fonts : work sans & eagle lake 
+		'https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap',
 		array(), 
 		null
 	); 
