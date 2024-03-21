@@ -23,16 +23,16 @@ get_header();
 
         get_template_part('template-parts/content', 'page');
 
-        // If comments are open or we have at least one comment, load up the comment template.
-        if (comments_open() || get_comments_number()) :
-            comments_template();
-        endif;
 
-    endwhile; // End of the loop.
+
     ?>
 
     <section class="about-section">
         <?php
+
+        if ( get_field('chef_photo') ) {
+        the_field('chef_photo');
+        }
         
          // Initialize variables to store image data
          $chef_image = get_field('chef_photo');
@@ -168,6 +168,8 @@ get_header();
 
 					endwhile;
 				endif;
+
+            endwhile; // End of the loop.
 			?>
 		</section>
 	</section>
