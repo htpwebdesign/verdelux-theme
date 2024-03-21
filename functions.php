@@ -52,8 +52,6 @@ function verdelux_theme_setup()
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'verdelux-theme'),
-			'footer-left' => esc_html__('Footer - Left Side', 'verdelux-theme'),
-			'footer-right' => esc_html__('Footer - Right Side', 'verdelux-theme'),
 		)
 	);
 
@@ -141,10 +139,24 @@ function verdelux_theme_widgets_init()
 add_action('widgets_init', 'verdelux_theme_widgets_init');
 
 /**
- * Enqueue scripts and styles.
+ * Enqueue scripts and styles. 
  */
 function verdelux_theme_scripts()
 {
+	wp_enqueue_style(
+		'verdelux-textfont', //custom text from google fonts
+		'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap',
+		array(), 
+		null
+	); 
+
+	wp_enqueue_style(
+		'verdelux-headerfont', //custom header text 
+		'https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap',
+		array(), 
+		null
+	); 
+
 	wp_enqueue_style('verdelux-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_enqueue_style('verdelux-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('verdelux-theme-style', 'rtl', 'replace');
@@ -159,15 +171,6 @@ function verdelux_theme_scripts()
 	}
 }
 add_action('wp_enqueue_scripts', 'verdelux_theme_scripts');
-
-
-
-
-
-
-
-
-
 
 
 // Add google api key for ACF
@@ -227,6 +230,31 @@ require get_template_directory() . '/inc/CPT-taxonomy.php';
 
 // ** Custom Post Types **
 
+/**
+ * Enqueue Slick CSS
+ */
+function enqueue_slick_styles() {
+    wp_enqueue_style('slick-css' , get_template_directory_uri() . '/slick/slick.css');
+}
+add_action('wp_enqueue_scripts', 'enqueue_slick_styles');
+
+function enqueue_slick_theme_styles() {
+    wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css');
+}
+add_action('wp_enqueue_scripts', 'enqueue_slick_styles');
+
+/**
+ * Enqueue Slick JavaScript
+ */
+function enqueue_slick_scripts() {
+    wp_enqueue_script('slick-js', get_template_directory_uri() . '/slick/slick.js', array('jquery'), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_slick_scripts');
+
+function enqueue_slick_custom() {
+    wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery', 'slick-js'), '1.0', true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_slick_custom');
 // Edit Placeholder Text Section
 
 // Change 'Add Title' placeholder text to 'Add Menu Item Title'
@@ -276,3 +304,11 @@ function vdx_change_testimonial_title($title, $post_type)
 	return $title;
 }
 add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
+
+//menu filters
+function enqueue_menu_tabs(){
+	wp_enqueue_script('menu-tab', get_template_directory_uri() . '/js/menu-tab.js');
+}
+	add_action('wp_enqueue_scripts', 'enqueue_menu_tabs');
+
+
