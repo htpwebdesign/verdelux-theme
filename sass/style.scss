@@ -80,6 +80,13 @@ Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
 # Components
 --------------------------------------------------------------*/
 @import "components/components";
+@import "components/content/page-about";
+@import "components/content/page-careers"; 
+@import "components/content/page-community";
+@import "components/content/page-contact";
+@import "components/content/page-home";
+@import "components/content/page-menu";
+
 
 /*--------------------------------------------------------------
 # Plugins
