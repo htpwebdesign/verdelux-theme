@@ -26,6 +26,21 @@ get_header();
     endwhile; // End of the loop.
     ?>
 
+    <section class="about-section">
+        <?php
+        // Initialize variables to store image data
+        if (get_field('chef_photo')) {
+            $chef_image = get_field('chef_photo');
+            $size = 'large';
+            $chef_image_output = wp_get_attachment_image($chef_image, $size);
+            echo $chef_image_output; // Output the image
+        }
+
+        if (get_field('about_restuarant_')) {
+            echo '<p>' . get_field('about_restuarant_') . '</p>';
+        }
+        ?>
+    </section>
     <section class="location-section">
         <h2>Locations</h2>
         <?php
