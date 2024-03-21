@@ -30,14 +30,12 @@ get_header();
     <section class="about-section">
         <?php
 
+          // Initialize variables to store image data
         if ( get_field('chef_photo') ) {
-        the_field('chef_photo');
-        }
+            $chef_image = get_field('chef_photo');
+            $image_output = '';
+            }
         
-         // Initialize variables to store image data
-         $chef_image = get_field('chef_photo');
-         $image_output = '';
-
          if ($chef_image) {
             $size = 'large';
             $chef_image_output = wp_get_attachment_image($chef_image, $size);
