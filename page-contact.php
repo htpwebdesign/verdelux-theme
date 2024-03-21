@@ -38,46 +38,45 @@ get_header();
 
 			// Get all the ACF fields for the post
 			$fields = get_fields();
+			echo '<article>';
 
-			foreach ($fields as $key => $value) {
-				$field_object = get_field_object($key);
-				$label = $field_object['label'];
+			if (function_exists('get_field')) {
 
-				if ($key === 'location_name_') {
-					echo '<h2>' . $value . '</h2>';
+				if (get_field('location_name_')) {
+					echo '<p>' . the_field('location_name_') . '</p>';
+				}
+				
+				if (get_field('map_location')) {
+					var_dump(get_field('map_location'));
+					// echo '<p>' . the_field('location_name_') . '</p>';
 				}
 
-				if ($key === 'map_location') {
-
-					$location = get_field('map_location');
-					if ($location) {
-
-						echo '<div class="acf-map" data-zoom="16">';
-						echo '<div class="marker" data-lat="' . esc_attr($location['lat']) . '" data-lng="' . esc_attr($location['lng']) . '"></div>';
-						echo '</div>';
-					}
+				if (get_field('address')) {
+					echo '<p>' . the_field('address') . '</p>';
 				}
 
-				if ($key === 'address') {
-					echo '<p>' . $value . '</p>';
-				}
+				if (get_field('hours')) {
+					if (is_array(get_field('hours'))) {
+						$hours = get_field('hours');
 
-				if ($key === 'hours') {
-					if ( is_array($value)) {
-						foreach ($value as $dayTime) {
-							echo '<p>' . $dayTime['day'] . ' ' . $dayTime['time_'] . '</p>';
+						echo '<ul>';
+
+						foreach ($hours as $dayTime) {
+							echo '<li>' . $dayTime['day'] . ' ' . $dayTime['time_'] . '</li>';
 						}
-					}
+						echo '</ul>';
+					};
 				}
 
-				if ($key === 'phone_number_') {
-					echo '<p>' . $value . '</p>';
+				if (get_field('email')) {
+					echo '<p>' . the_field('email') . '</p>';
 				}
 
-				if ($key === 'email') {
-					echo '<a href="mailto:' . $value . '"> ' . $value . '</a>';
+				if (get_field('phone_number_')) {
+					echo '<p>' . the_field('phone_number_') . '</p>';
 				}
 			}
+			echo '</article>';
 		}
 	}
 	?>
