@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages
  *
@@ -41,7 +42,7 @@ get_header();
         }
         ?>
     </section>
-    
+
     <section class="location-section">
         <h2>Locations</h2>
         <?php
@@ -58,48 +59,48 @@ get_header();
                 $counter++; // Increment counter for each location entry
         ?>
                 <section class="location-entry-<?php echo $counter; ?>">
-                <?php
-                // Get all the ACF fields for the post
-                $fields = get_fields();
+                    <?php
+                    // Get all the ACF fields for the post
+                    $fields = get_fields();
 
-                // Initialize variables to store image data
-                $image = get_field('location_image');
-                $image_output = '';
+                    // Initialize variables to store image data
+                    $image = get_field('location_image');
+                    $image_output = '';
 
-                // Check if image is available
-                if ($image) {
-                    $size = 'large';
-                    $image_output = wp_get_attachment_image($image, $size);
-                    echo $image_output; // Output the image
-                }
-
-                // Output other fields except email
-                foreach ($fields as $key => $value) {
-                    $field_object = get_field_object($key);
-                    $label = $field_object['label'];
-
-                    if ($key === 'location_name_') {
-                        echo '<h3>' . $value . '</h3>';
+                    // Check if image is available
+                    if ($image) {
+                        $size = 'large';
+                        $image_output = wp_get_attachment_image($image, $size);
+                        echo $image_output; // Output the image
                     }
 
-                    if ($key === 'address') {
-                        echo '<p>' . $value . '</p>';
+                    // Output other fields except email
+                    foreach ($fields as $key => $value) {
+                        $field_object = get_field_object($key);
+                        $label = $field_object['label'];
+
+                        if ($key === 'location_name_') {
+                            echo '<h3>' . $value . '</h3>';
+                        }
+
+                        if ($key === 'address') {
+                            echo '<p>' . $value . '</p>';
+                        }
+
+                        if ($key === 'phone_number_') {
+                            echo '<p>' . $value . '</p>';
+                        }
                     }
 
-                    if ($key === 'phone_number_') {
-                        echo '<p>' . $value . '</p>';
+                    // Output the email
+                    if (isset($fields['email'])) {
+                        echo '<a href="mailto:' . $fields['email'] . '">' . $fields['email'] . '</a>';
                     }
-                }
 
-                // Output the email
-                if (isset($fields['email'])) {
-                    echo '<a href="mailto:' . $fields['email'] . '">' . $fields['email'] . '</a>';
-                }
-
-                ?>
+                    ?>
                 </section>
 
-            <?php
+        <?php
             endwhile;
         endif;
         wp_reset_postdata(); // Reset post data after custom query
@@ -107,7 +108,7 @@ get_header();
     </section>
 
     <section class="testimonials">
-        <h3>Testimonials</h3>
+        <h2>Testimonials</h2>
 
         <section class="instagram-feed">
             <h3>Instagram</h3>
@@ -165,13 +166,13 @@ get_header();
                             }
 
                             if ($key === 'testimonials_rating') {
-                                echo '<p>' . $value . '</p>';
+                                echo '<p>' . $value . " /5" . '</p>';
                             }
                         }
 
                         ?>
                     </section>
-                <?php
+            <?php
                 endwhile;
             endif;
             wp_reset_postdata(); // Reset post data after custom query
@@ -182,4 +183,3 @@ get_header();
 
 <?php
 get_footer();
-

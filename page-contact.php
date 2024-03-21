@@ -21,21 +21,20 @@ get_header();
 	<?php
 	while (have_posts()) : the_post();
 		get_template_part('template-parts/content', 'page');
-	endwhile; // End of the loop.
-	?>
+		?>
 
 	<?php
 
-	$args = array(
+$args = array(
 		'post_type' => 'vdx-location',
 		'posts_per_page' => -1
 	);
 	$location_query = new WP_Query($args);
-
+	
 	if ($location_query->have_posts()) {
 		while ($location_query->have_posts()) {
 			$location_query->the_post();
-
+			
 			// Get all the ACF fields for the post
 			$fields = get_fields();
 			echo '<article>';
@@ -43,24 +42,24 @@ get_header();
 			if (function_exists('get_field')) {
 
 				if (get_field('location_name_')) {
-					echo '<p>' . the_field('location_name_') . '</p>';
+					echo '<h2>' . get_field('location_name_') . '</h2>';
 				}
-				
+
 				if (get_field('map_location')) {
 					var_dump(get_field('map_location'));
 					// echo '<p>' . the_field('location_name_') . '</p>';
 				}
-
+				
 				if (get_field('address')) {
-					echo '<p>' . the_field('address') . '</p>';
+					echo '<p>' . get_field('address') . '</p>';
 				}
 
 				if (get_field('hours')) {
 					if (is_array(get_field('hours'))) {
 						$hours = get_field('hours');
-
+						
 						echo '<ul>';
-
+						
 						foreach ($hours as $dayTime) {
 							echo '<li>' . $dayTime['day'] . ' ' . $dayTime['time_'] . '</li>';
 						}
@@ -69,19 +68,19 @@ get_header();
 				}
 
 				if (get_field('email')) {
-					echo '<p>' . the_field('email') . '</p>';
+					echo '<p>' . get_field('email') . '</p>';
 				}
 
 				if (get_field('phone_number_')) {
-					echo '<p>' . the_field('phone_number_') . '</p>';
+					echo '<p>' . get_field('phone_number_') . '</p>';
 				}
 			}
 			echo '</article>';
 		}
 	}
+	
+	endwhile; // End of the loop.
 	?>
-
-
 </main><!-- #main -->
 
 <?php

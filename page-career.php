@@ -91,7 +91,7 @@ get_header();
 		}
 		?>
 		</section>
-		<!-- conditional -->
+
 		<section>
 		<h2><?php the_field('apply_title') ?></h2>
 		<p><?php the_field('apply_text') ?></p>
