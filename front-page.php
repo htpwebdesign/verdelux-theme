@@ -41,6 +41,7 @@ get_header();
         }
         ?>
     </section>
+    
     <section class="location-section">
         <h2>Locations</h2>
         <?php
