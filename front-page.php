@@ -38,16 +38,12 @@ get_header();
          $chef_image = get_field('chef_photo');
          $image_output = '';
 
-         echo '<br>';
-
          if ($chef_image) {
             $size = 'large';
             $chef_image_output = wp_get_attachment_image($chef_image, $size);
             echo $chef_image_output; // Output the image
         }
 
-        echo '<br>';
-        
             if ( get_field('about_restuarant_') ) {
             the_field('about_restuarant_');
              }
@@ -106,9 +102,6 @@ get_header();
             if (isset($fields['email'])) {
                 echo '<a href="mailto:' . $fields['email'] . '">' . $fields['email'] . '</a>';
             }
-
-            // Add a line break after each location
-            echo '<br>';
 
         endwhile;
     endif;
