@@ -284,7 +284,7 @@ function vdx_register_custom_post_types()
       'hierarchical'       => false,
       'menu_position'      => 5,
       'menu_icon'          => 'dashicons-format-quote',
-      'supports'           => array('title', 'editor'),
+      'supports'           => array('title', 'editor'), //
    );
    register_post_type('vdx-testimonial', $args);
 }
@@ -317,7 +317,7 @@ function vdx_register_taxonomies()
       'query_var'         => true,
       'rewrite'           => array('slug' => 'location-category'),
    );
-   register_taxonomy('vdx-location-category', array('vdx-location','vdx-team', 'vdx-career'), $args);
+   register_taxonomy('vdx-location-category', array('vdx-location', 'vdx-team', 'vdx-career'), $args);
 
    // Menu Taxonomy
    $labels = array(
