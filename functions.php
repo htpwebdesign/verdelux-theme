@@ -52,6 +52,8 @@ function verdelux_theme_setup()
 	register_nav_menus(
 		array(
 			'menu-1' => esc_html__('Primary', 'verdelux-theme'),
+			'footer-left' => esc_html__('Footer - Left Side', 'verdelux-theme'),
+			'footer-right' => esc_html__('Footer - Right Side', 'verdelux-theme'),
 		)
 	);
 
@@ -144,36 +146,21 @@ add_action('widgets_init', 'verdelux_theme_widgets_init');
 function verdelux_theme_scripts()
 {
 	wp_enqueue_style(
-		'verdelux-textfont', //custom text from google fonts
-		'https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap',
-		array(), 
-		null
-	); 
-
-	wp_enqueue_style(
-		'verdelux-headerfont', //custom header text 
-		'https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap',
+		'verdelux-textfont', //custom texts from google fonts : work sans & eagle lake 
+		'https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap',
 		array(), 
 		null
 	); 
 
 	wp_enqueue_style('verdelux-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
+	wp_enqueue_style('verdelux-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('verdelux-theme-style', 'rtl', 'replace');
 
 	wp_enqueue_script('verdelux-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
-	wp_enqueue_script('verdelux-theme-scripts', get_template_directory_uri() . '/js/scripts.js', array(), _S_VERSION);
-	wp_enqueue_script('google-maps', get_template_directory_uri() . '/js/googleMaps.js', array(), '1.0.0', true);
+	wp_enqueue_script('verdelux-theme-jobPostDescripToggle', get_template_directory_uri() . '/js/jobPostDescripToggle.js', array(), _S_VERSION);
+	wp_enqueue_script('googleMaps', get_template_directory_uri() . '/js/googleMaps.js', array('googleMapsKey', 'jquery'), '1.0.0', true);
+	wp_enqueue_script('googleMapsKey', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAgKjLxZAbjdoqpa8zcmIMhu53vA6h9xYU&callback=Function.prototype', array(), '1.0', true);
 
-	//slick carousel
-	wp_enqueue_style('slick-css' , get_template_directory_uri() . '/slick/slick.css');
-	wp_enqueue_script('slick-js', get_template_directory_uri() . '/slick/slick.js', array('jquery'), '1.0', true);
-	wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css');
-	wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery', 'slick-js'), '1.0', true);
-
-	//menu tab
-	wp_enqueue_script('menu-tab', get_template_directory_uri() . '/js/menu-tab.js');
-
-	
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
@@ -221,7 +208,7 @@ require get_template_directory() . '/inc/job-selection-function.php';
 /**
  * Google Maps Template Part 
  */
-require get_template_directory() . '/inc/googleMaps.php';
+// require get_template_directory() . '/inc/googleMaps.php';
 
 /**
  * Load Jetpack compatibility file.

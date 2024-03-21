@@ -21,63 +21,66 @@ get_header();
 	<?php
 	while (have_posts()) : the_post();
 		get_template_part('template-parts/content', 'page');
-	endwhile; // End of the loop.
-	?>
+		?>
 
 	<?php
 
-	$args = array(
+$args = array(
 		'post_type' => 'vdx-location',
 		'posts_per_page' => -1
 	);
 	$location_query = new WP_Query($args);
-
+	
 	if ($location_query->have_posts()) {
 		while ($location_query->have_posts()) {
 			$location_query->the_post();
-
+			
 			// Get all the ACF fields for the post
 			$fields = get_fields();
+			echo '<article>';
 
-			foreach ($fields as $key => $value) {
-				$field_object = get_field_object($key);
-				$label = $field_object['label'];
+			if (function_exists('get_field')) {
 
-				if ($key === 'location_name_') {
-					echo '<h2>' . $value . '</h2>';
+				if (get_field('location_name_')) {
+					echo '<h2>' . get_field('location_name_') . '</h2>';
 				}
 
-				if($key === 'map_location'){
-				echo '<div id="map"></div>';
+				if (get_field('map_location')) {
+					var_dump(get_field('map_location'));
+					// echo '<p>' . the_field('location_name_') . '</p>';
+				}
+				
+				if (get_field('address')) {
+					echo '<p>' . get_field('address') . '</p>';
 				}
 
-				if ($key === 'address') {
-					echo '<p>' . $value . '</p>';
+				if (get_field('hours')) {
+					if (is_array(get_field('hours'))) {
+						$hours = get_field('hours');
+						
+						echo '<ul>';
+						
+						foreach ($hours as $dayTime) {
+							echo '<li>' . $dayTime['day'] . ' ' . $dayTime['time_'] . '</li>';
+						}
+						echo '</ul>';
+					};
 				}
 
-				if ($key === 'phone_number_') {
-					echo '<p>' . $value . '</p>';
+				if (get_field('email')) {
+					echo '<p>' . get_field('email') . '</p>';
 				}
 
-				if ($key === 'email') {
-					echo '<a href="mailto:' . $value . '"> ' . $value . '</a>';
+				if (get_field('phone_number_')) {
+					echo '<p>' . get_field('phone_number_') . '</p>';
 				}
 			}
+			echo '</article>';
 		}
 	}
-
-	// if ($location_query->have_posts()) {
-	// 	while ($location_query->have_posts()) {
-	// 		$location_query->the_post();
-
-	// 		$location_title = get_field('location_title');
-	// 		echo '<h2>' . $location_title . '</h2>';
-	// 	}
-	// 	wp_reset_postdata();
-	// }
+	
+	endwhile; // End of the loop.
 	?>
-
-
 </main><!-- #main -->
 
 <?php

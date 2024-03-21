@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying all pages
  *
@@ -23,161 +24,161 @@ get_header();
 
         get_template_part('template-parts/content', 'page');
 
-        // If comments are open or we have at least one comment, load up the comment template.
-        if (comments_open() || get_comments_number()) :
-            comments_template();
-        endif;
-
     endwhile; // End of the loop.
     ?>
 
     <section class="about-section">
         <?php
-        
-         // Initialize variables to store image data
-         $chef_image = get_field('chef_photo');
-         $image_output = '';
-
-         echo '<br>';
-
-         if ($chef_image) {
+        // Initialize variables to store image data
+        if (get_field('chef_photo')) {
+            $chef_image = get_field('chef_photo');
             $size = 'large';
             $chef_image_output = wp_get_attachment_image($chef_image, $size);
             echo $chef_image_output; // Output the image
         }
 
-        echo '<br>';
-        
-            if ( get_field('about_restuarant_') ) {
-            the_field('about_restuarant_');
-             }
-
+        if (get_field('about_restuarant_')) {
+            the_field('about_restuarant_') ;
+        }
         ?>
     </section>
 
-	<section class="location-section">
-        
-    <h2>Locations</h2>
+    <section class="location-section">
+        <h2>Locations</h2>
+        <?php
+        $args = array(
+            'post_type'      => 'vdx-location',
+            'posts_per_page' => -1
+        );
+        $location_query = new WP_Query($args);
 
-    <?php
-    $args = array(
-        'post_type'      => 'vdx-location',
-        'posts_per_page' => -1
-    );
-    $location_query = new WP_Query($args);
+        if ($location_query->have_posts()) :
+            $counter = 0; // Initialize counter variable
+            while ($location_query->have_posts()) :
+                $location_query->the_post();
+                $counter++; // Increment counter for each location entry
+        ?>
+                <section class="location-entry-<?php echo $counter; ?>">
+                    <?php
+                    // Get all the ACF fields for the post
+                    $fields = get_fields();
 
-    if ($location_query->have_posts()) :
-        while ($location_query->have_posts()) :
-            $location_query->the_post();
+                    // Initialize variables to store image data
+                    $image = get_field('location_image');
+                    $image_output = '';
 
-            // Get all the ACF fields for the post
-            $fields = get_fields();
+                    // Check if image is available
+                    if ($image) {
+                        $size = 'large';
+                        $image_output = wp_get_attachment_image($image, $size);
+                        echo $image_output; // Output the image
+                    }
 
-            // Initialize variables to store image data
-            $image = get_field('location_image');
-            $image_output = '';
+                    // Output other fields except email
+                    foreach ($fields as $key => $value) {
+                        $field_object = get_field_object($key);
+                        $label = $field_object['label'];
 
-            // Check if image is available
-            if ($image) {
-                $size = 'large';
-                $image_output = wp_get_attachment_image($image, $size);
-                echo $image_output; // Output the image
-            }
+                        if ($key === 'location_name_') {
+                            echo '<h3>' . $value . '</h3>';
+                        }
 
-            // Output other fields except email
-            foreach ($fields as $key => $value) {
-                $field_object = get_field_object($key);
-                $label = $field_object['label'];
+                        if ($key === 'address') {
+                            echo '<p>' . $value . '</p>';
+                        }
 
-                if ($key === 'location_name_') {
-                    echo '<h3>' . $value . '</h3>';
-                }
+                        if ($key === 'phone_number_') {
+                            echo '<p>' . $value . '</p>';
+                        }
+                    }
 
-                if ($key === 'address') {
-                    echo '<p>' . $value . '</p>';
-                }
+                    // Output the email
+                    if (isset($fields['email'])) {
+                        echo '<a href="mailto:' . $fields['email'] . '">' . $fields['email'] . '</a>';
+                    }
 
-                if ($key === 'phone_number_') {
-                    echo '<p>' . $value . '</p>';
-                }
-            }
+                    ?>
+                </section>
 
-            // Output the email
-            if (isset($fields['email'])) {
-                echo '<a href="mailto:' . $fields['email'] . '">' . $fields['email'] . '</a>';
-            }
+        <?php
+            endwhile;
+        endif;
+        wp_reset_postdata(); // Reset post data after custom query
+        ?>
+    </section>
 
-            // Add a line break after each location
-            echo '<br>';
+    <section class="testimonials">
+        <h2>Testimonials</h2>
 
-        endwhile;
-    endif;
-    ?>
-	</section>
+        <section class="instagram-feed">
+            <h3>Instagram</h3>
 
-	<section class="testimonials">
-		<h3>Testimonials</h3>
+            <?php
+            // Output Instagram feed shortcode
+            echo do_shortcode('[instagram-feed feed=1]');
+            ?>
+        </section>
 
-		<section class="instagram-feed">
-			<h3>Instagram</h3>
+        <section class="reviews">
+            <h3>Reviews</h3>
 
-			<?php
-			// Output Instagram feed shortcode
-			echo do_shortcode('[instagram-feed feed=1]');
-			?>
-		</section>
+            <?php
+            $args = array(
+                'post_type'      => 'vdx-testimonial',
+                'posts_per_page' => -1
+            );
+            $testimonial_query = new WP_Query($args);
 
-		<section class="reviews">
-			<h3>Reviews</h3>
+            if ($testimonial_query->have_posts()) :
+                $testimonial_counter = 0; // Initialize testimonial counter variable
 
-			<?php
-				$args = array(
-					'post_type'			=> 'vdx-testimonial',
-					'posts_per_page'	=> -1
-				);
-				$testimonial_query = new WP_Query($args);
+                while ($testimonial_query->have_posts()) :
+                    $testimonial_query->the_post();
+                    $testimonial_counter++; // Increment testimonial counter for each testimonial entry
+            ?>
+                    <section class="testimonial-entry-<?php echo $testimonial_counter; ?>">
+                        <?php
+                        // Get all the ACF fields for the testimonial
+                        $fields = get_fields();
 
-				if ($testimonial_query->have_posts()) :
-					while ($testimonial_query->have_posts()) :
-						$testimonial_query->the_post();
+                        // Initialize variables to store image data
+                        $testimonial_image = get_field('testimonials_image');
+                        $testimonial_image_output = '';
 
-						// Get all the ACF fields for the post
-						$fields = get_fields();
+                        // Check if image is available
+                        if ($testimonial_image) {
+                            $size = 'medium';
+                            $testimonial_image_output = wp_get_attachment_image($testimonial_image, $size);
+                            echo $testimonial_image_output; // Output the image
+                        }
 
-						// Initialize variables to store image data
-						$testimonial_image = get_field('testimonials_image');
-						$testimonial_image_output = '';
+                        // Output testimonial fields
+                        foreach ($fields as $key => $value) {
+                            $field_object = get_field_object($key);
+                            $label = $field_object['label'];
 
-						// Check if image is available
-						if ($testimonial_image) {
-							$size = 'medium';
-							echo $image_output = wp_get_attachment_image($testimonial_image,$size);
-						}
+                            if ($key === 'name_') {
+                                echo '<h3 class=>' . $value . '</h3>';
+                            }
 
-						// Output fields
-						foreach ($fields as $key => $value) {
-							$field_object = get_field_object($key);
-							$label = $field_object['label'];
+                            if ($key === 'testimonials_text') {
+                                echo '<p>' . $value . '</p>';
+                            }
 
-							if ($key === 'name_') {
-								echo '<h3>' . $value . '</h3>';
-							}
+                            if ($key === 'testimonials_rating') {
+                                echo '<p>' . $value . " /5" . '</p>';
+                            }
+                        }
 
-							if ($key === 'testimonials_text') {
-								echo '<p>' . $value . '</p>';
-							}
-
-							if ($key === 'testimonials_rating') {
-								echo '<p>' . $value . '</p>';
-							}
-
-						}
-
-					endwhile;
-				endif;
-			?>
-		</section>
-	</section>
+                        ?>
+                    </section>
+            <?php
+                endwhile;
+            endif;
+            wp_reset_postdata(); // Reset post data after custom query
+            ?>
+        </section> <!-- End of .reviews -->
+    </section> <!-- End of .testimonials -->
 </main><!-- #main -->
 
 <?php

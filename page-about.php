@@ -16,14 +16,13 @@ get_header();
 ?>
 
 	<main id="primary" class="site-main">
-
+    
+		
 		<?php
 			while ( have_posts() ) :
 				the_post();
 				get_template_part( 'template-parts/content', 'page' );
 		?>
-
-		<?php the_content(); ?>
 
 		<section class="about-chef">
 			
@@ -31,7 +30,7 @@ get_header();
 				if (function_exists( 'get_field' )) {
 
 					if ( get_field( 'title' ) ) {
-						echo '<h1>' . get_field( 'title' ) . '</h1>'; 
+						echo '<h2>' . get_field( 'title' ) . '</h2>'; 
 					}
 					
 					if (get_field('chef_image') ) {
