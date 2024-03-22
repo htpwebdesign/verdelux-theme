@@ -161,6 +161,15 @@ function verdelux_theme_scripts()
 	wp_enqueue_script('googleMaps', get_template_directory_uri() . '/js/googleMaps.js', array('googleMapsKey', 'jquery'), '1.0.0', true);
 	wp_enqueue_script('googleMapsKey', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAgKjLxZAbjdoqpa8zcmIMhu53vA6h9xYU&callback=Function.prototype', array(), '1.0', true);
 
+	wp_enqueue_style('slick-css' , get_template_directory_uri() . '/slick/slick.css');
+	wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css');
+
+	wp_enqueue_script('slick-js', get_template_directory_uri() . '/slick/slick.js', array('jquery'), '1.0', true);
+	wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery', 'slick-js'), '1.0', true);
+	wp_enqueue_script('menu-tab', get_template_directory_uri() . '/js/menu-tab.js');
+
+
+
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
