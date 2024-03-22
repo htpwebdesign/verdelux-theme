@@ -22,19 +22,16 @@ get_header();
 	while (have_posts()) :
 		the_post();
 
-		if (has_post_thumbnail()) {
-			// the_post_thumbnail();
-		}
 		get_template_part('template-parts/content', 'page');
 		?>
 		
 		
 		<!-- Job Post section -->
 	<section>
-		<div>
+		<header>
 			<h2><?php the_field('join_team') ?></h2>
 			<p><?php the_field('intro_message') ?></p>
-		</div>
+		</header>
 
 		<section>
 			<?php
@@ -50,8 +47,7 @@ get_header();
 			if ($career_post_query->have_posts()) :
 				while ($career_post_query->have_posts()) : $career_post_query->the_post();
 				$description = get_field('description');
-				// $excerpt = substr($description, 0, 10);
-				
+								
 				// Location taxonomy
 				$locations = get_the_terms(get_the_ID(), 'vdx-location-category');
 				$location_names = array();
@@ -65,10 +61,14 @@ get_header();
 					$location_list = implode(', ', $location_names);
 					
 					echo '<article>';
+					echo '<header>';
 					echo '<h3> Position: ' . get_field('job_listing') . '</h3>';
 					echo '<p>Location: ' . $location_list . '</p>';
+					echo '</header>';
 					echo '<div class="job-description " style="display: none">' . $description . '</div>';
+					echo '<footer>';
 					echo '<button class="view-more"> View Job Posting</button>';
+					echo '</footer>';
 					echo '</article>';
 					
 				endwhile;
@@ -93,11 +93,11 @@ get_header();
 		</section>
 
 		<section>
-		<h2><?php the_field('apply_title') ?></h2>
+		<h3><?php the_field('apply_title') ?></h3>
 		<p><?php the_field('apply_text') ?></p>
 		<a href="mailto: <?php the_field('email_link') ?>">Apply With Us </a>
 		</section>
-		<?php endwhile;?> // End of the loop.
+		<?php endwhile;?>
 		</main><!-- #main -->
 		
 		<?php

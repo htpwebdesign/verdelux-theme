@@ -87,10 +87,16 @@ get_header();
 	echo '<section>';
 	//allergen symbols legend
 	echo '<h2>Allergen Symbols</h2>';
-	echo '<div> <p>Contain Nuts</p> <span>' . get_template_part('images/peanut') . '</span> </div>';
-	echo '<p>Gluten-Free</p>' . get_template_part('images/gluten-free');
-	echo '<p>Vegan</p>' . get_template_part('images/vegan');
-	echo '<p>Alcohol</p>' . get_template_part('images/alcohol');
+	
+	$images = ['peanut', 'gluten-free', 'vegan', 'alcohol'];
+	$labels = ['Contain Nuts', 'Gluten-Free', 'Vegan', 'Alcohol'];
+
+	foreach ($images as $index => $image) {
+		ob_start();
+		get_template_part('images/' . $image);
+		$imageContent = ob_get_clean();
+		echo '<div> <p>' . $labels[$index] . '</p> <span>' . $imageContent . '</span> </div>';
+	}
 	echo '</section>';
 
 	$terms = get_terms(
@@ -143,13 +149,15 @@ get_header();
 						//Allergen symbols
 						$dish_legend = get_field('dish_legend');
 						if ($dish_legend) : ?>
-							<object>
+							<div>
 								<?php foreach ($dish_legend as $legend) :
-									$url = 'images/' . $legend;
-									get_template_part($url);
+								echo '<span>';
+								$url = 'images/' . $legend;
+								get_template_part($url);
+								echo '</span>';
 								?>
 								<?php endforeach; ?>
-							</object>
+							</div>
 	<?php endif;
 						echo '</article>';
 					}
