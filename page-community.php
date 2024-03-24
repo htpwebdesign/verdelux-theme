@@ -16,7 +16,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="vlx__main site-main">
 
 	<?php
 	while (have_posts()) :
@@ -33,12 +33,12 @@ get_header();
 
 		$query = new WP_Query($args);
 		if ($query->have_posts()) {
-			echo '<section>';
-			echo '<h2>Upcoming</h2>';
+			echo '<section class="vlx__community">';
+			echo '<h2 class="vlx__community--title">Upcoming</h2>';
 			while ($query->have_posts()) {
 				$query->the_post();
-				echo '<article>';
-				echo '<h3>' . esc_html(get_the_title()) . '</h3>';
+				echo '<article class="vlx__community--event">';
+				echo '<h3 class="vlx__community__event--title">' . esc_html(get_the_title()) . '</h3>';
 				echo the_field('description_&_details_');
 				echo '</article>';
 			}

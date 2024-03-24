@@ -16,7 +16,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="vlx__main site-main">
 
 
 	<?php
@@ -25,13 +25,13 @@ get_header();
 		get_template_part('template-parts/content', 'page');
 	?>
 
-		<section class="about-chef">
+		<section class="vlx__about__chef about-chef">
 
 			<?php
 			if (function_exists('get_field')) {
 
 				if (get_field('title')) {
-					echo '<h2>' . get_field('title') . '</h2>';
+					echo '<h2 class="vlx__about__chef--title">' . get_field('title') . '</h2>';
 				}
 
 				if (get_field('chef_image')) {
@@ -42,30 +42,31 @@ get_header();
 				}
 
 				if (get_field('chef_about')) {
-					echo '<p>' . get_field('chef_about') . '</p>';
+					echo '<p class=="vlx__about__chef--text">' . get_field('chef_about') . '</p>';
 				}
 			}
 			?>
 		</section>
 
-		<section class="about-team">
+		<section class="vlx__about__team about-team">
 
 			<?php if (get_field('team_title')) {
-				echo '<h2>' . get_field('team_title') . '</h2>';
+				echo '<h2 class="vlx__about__team--title">' . get_field('team_title') . '</h2>';
 			} ?>
 
-			<div class="filter-tabs">
-				<ul>
+			<section class="vlx__about__team--tabs filter-tabs">
+				<ul class="vlx__about__team__tabs--list">
 					<?php
 					//display filter tabs for Brisbane and Gold Coast
 					$locations = array('brisbane', 'gold-coast');
 					foreach ($locations as $location) {
-						echo '<li><a href="?location=' . $location . '">' . ucfirst(str_replace('-', ' ', $location)) . '</a></li>';
+						echo '<li class="vlx__about__team__list--item"><a href="?location=' . $location . '" class="vlx__about__team__item__link">' . ucfirst(str_replace('-', ' ', $location)) . '</a></li>';
 					}
 					?>
 				</ul>
-			</div>
-			<div class="team-content">
+			</section>
+
+			<section class="vlx__about__team--content team-content">
 				<?php
 				//default to Brisbane location on intial page load
 				$location = isset($_GET['location']) ? sanitize_text_field($_GET['location']) : 'brisbane';
@@ -88,7 +89,7 @@ get_header();
 
 				if ($query->have_posts()) {
 					//output Term name (locations: Brisbane or Gold Coast) *REMOVE THIS LINE ONCE FILTER TABS R WORKING*
-					echo '<h3>' . ucfirst(str_replace('-', ' ', $location)) . '</h3>';
+					echo '<h3 class="vlx__about__team__content--locationTitle">' . ucfirst(str_replace('-', ' ', $location)) . '</h3>';
 
 					// output Content
 					while ($query->have_posts()) {
@@ -104,11 +105,11 @@ get_header();
 							}
 
 							//output team member name
-							echo '<h4>' . esc_html(get_the_title()) . '</h4>';
+							echo '<h4 class="vlx__about__team__content--name">' . esc_html(get_the_title()) . '</h4>';
 
 							//output job title 
 							if (get_field('position')) {
-								echo '<p>' . esc_html(get_field('position')) . '</p>';
+								echo '<p class="vlx__about__team__content--text">' . esc_html(get_field('position')) . '</p>';
 							}
 						}
 					}
@@ -118,7 +119,7 @@ get_header();
 				}
 
 				?>
-			</div>
+			</section>
 		</section>
 
 	<?php

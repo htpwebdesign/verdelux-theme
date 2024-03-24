@@ -16,7 +16,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="vlx__main site-main">
 
 	<?php
 	while (have_posts()) :
@@ -25,7 +25,7 @@ get_header();
 		get_template_part('template-parts/content', 'page');
 
 	?>
-		<div class="slick-carousel">
+		<div class="vlx__menu--carousel slick-carousel">
 			<?php
 			$image_ids = get_field('banner_image_carousel');
 
@@ -43,7 +43,7 @@ get_header();
 			?>
 		</div>
 
-		<div class="menu-tabs">
+		<section class="vlx__menu--tabs menu-tabs">
 			<?php
 			$terms = get_terms(array(
 				'taxonomy' => 'vdx-menu-type',
@@ -52,22 +52,39 @@ get_header();
 				'meta_key' => 'menu_order',
 
 			));
+			echo '<ul class="vlx__menu__tabs--list">';
 			foreach ($terms as $term) {
-				echo '<a class="menu-tab" data-filter="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a>';
+				echo '<li class="vlx__menu__tabs--item">';
+				echo '<a class="vlx__menu__tabs--link menu-tab" data-filter="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a>';
+				echo '</li>';
 			}
+			echo '</ul>';
 
 			?>
 
-		</div>
+		</section>
 
 
 		<?php
 		//allergen symbols legend
-		echo '<h2>Allergen Symbols</h2>';
-		echo '<p>Contain Nuts</p>' . get_template_part('images/peanut');
-		echo '<p>Gluten-Free</p>' . get_template_part('images/gluten-free');
-		echo '<p>Vegan</p>' . get_template_part('images/vegan');
-		echo '<p>Alcohol</p>' . get_template_part('images/alcohol');
+		echo '<section class="vlx__menu--allergen">';
+		echo '<h2 class="vlx__menu__allergen--title">Allergen Symbols</h2>';
+
+		$allergens = array(
+			"Contain Nuts" => 'images/peanut',
+			"Gluten-Free" => 'images/gluten-free',
+			"Vegan" => 'images/vegan',
+			"Alcohol" => 'images/alcohol'
+		);
+
+		foreach ($allergens as $allergen => $image) {
+			echo '<div class="vlx__menu__allergen--container">';
+			echo '<p class="vlx__menu__allergen--text">' . $allergen . '</p>' . get_template_part($image);
+			echo '</div>';
+		}
+
+		echo '</section>';
+
 		$terms = get_terms(
 			array(
 				'taxonomy' => 'vdx-menu-type'
@@ -91,8 +108,8 @@ get_header();
 
 				$query = new WP_Query($args);
 				if ($query->have_posts()) {
-					echo '<section id="' . esc_html($term->slug) . '" class="menu-contents">';
-					echo '<h2>' . esc_html($term->name) . '</h2>';
+					echo '<section id="' . esc_html($term->slug) . '" class="vlx__menu__category menu-contents">';
+					echo '<h2 class="vlx__menu__category--title">' . esc_html($term->name) . '</h2>';
 
 
 					while ($query->have_posts()) {
@@ -102,12 +119,12 @@ get_header();
 						if (function_exists('get_field')) {
 							// $fields = get_fields();
 							$dish_image = get_field('dish_image');
-							echo '<article>';
+							echo '<article class="vlx__menu__category--item">';
 							echo wp_get_attachment_image($dish_image, 'medium');
 
 							//output title 
 							$title = get_the_title();
-							echo '<p>' . esc_html($title) . '</p>';
+							echo '<p class="vlx__menu__category__item--text">' . esc_html($title) . '</p>';
 
 
 							//Ingredients
@@ -118,7 +135,7 @@ get_header();
 							//Allergen symbols
 							$dish_legend = get_field('dish_legend');
 							if ($dish_legend) : ?>
-								<ul>
+								<ul class="vlx__menu__category__item--allergen">
 									<?php foreach ($dish_legend as $legend) :
 										$url = 'images/' . $legend;
 										get_template_part($url);
@@ -142,5 +159,4 @@ get_header();
 </main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

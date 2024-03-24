@@ -11,10 +11,10 @@
 
 ?>
 
-	<footer id="colophon" class="site-footer">
+	<footer id="colophon" class="vlx__footer site-footer">
 		<!-- footer menu nav -->
-		<div class="footer-menus">
-			<nav class="footer-icons" id="footer-icons">
+		<section class="vlx__footer__section footer-menus">
+			<nav class="vlx__footer--navLeft footer-icons" id="footer-icons">
 				<?php
 					wp_nav_menu(
 						array(
@@ -23,7 +23,7 @@
 					);
 				?>
 			</nav>
-			<nav class="footer-navigation" id="footer-navigation">
+			<nav class="vlx__footer--navRight footer-navigation" id="footer-navigation">
 				<?php
 					wp_nav_menu(
 						array(
@@ -32,7 +32,7 @@
 					);
 				?>
 			</nav>
-		</div>
+		</section>
 		
 	</footer><!-- #colophon -->
 </div><!-- #page -->

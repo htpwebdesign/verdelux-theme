@@ -16,7 +16,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main">
+<main id="primary" class="vlx__main site-main">
 
 	<?php
 	while (have_posts()) : the_post();
@@ -24,6 +24,7 @@ get_header();
 	?>
 
 	<?php
+		echo '<section class="vlx__contact">';
 
 		$args = array(
 			'post_type' => 'vdx-location',
@@ -35,44 +36,45 @@ get_header();
 			while ($location_query->have_posts()) {
 				$location_query->the_post();
 
+
 				// Get all the ACF fields for the post
 				$fields = get_fields();
-				echo '<article>';
+				echo '<article class="vlx__contact--location">';
 
 				if (function_exists('get_field')) {
 
 					if (get_field('location_name_')) {
-						echo '<h2>' . get_field('location_name_') . '</h2>';
+						echo '<h2 class="vlx__contact__location--locationTitle">' . get_field('location_name_') . '</h2>';
 					}
 
 					if (get_field('map_location')) {
 						var_dump(get_field('map_location'));
-						// echo '<p>' . the_field('location_name_') . '</p>';
+						// echo '<p class="vlx__contact__location--map">' . the_field('location_name_') . '</p>';
 					}
 
 					if (get_field('address')) {
-						echo '<p>' . get_field('address') . '</p>';
+						echo '<p class="vlx__contact__location--address">' . get_field('address') . '</p>';
 					}
 
 					if (get_field('hours')) {
 						if (is_array(get_field('hours'))) {
 							$hours = get_field('hours');
 
-							echo '<ul>';
+							echo '<ul class="vlx__contact__location__hours--list">';
 
 							foreach ($hours as $dayTime) {
-								echo '<li>' . $dayTime['day'] . ' ' . $dayTime['time_'] . '</li>';
+								echo '<li class="vlx__contact__location__hours--item">' . $dayTime['day'] . ' ' . $dayTime['time_'] . '</li>';
 							}
 							echo '</ul>';
 						};
 					}
-					echo '<div>';
+					echo '<div class="vlx__contact__location--contactInfo">';
 					if (get_field('email')) {
-						echo '<a href="mailto:' . get_field('email') . '">' . get_field('email') . '</a>';
+						echo '<a href="mailto:' . get_field('email') . '" class="vlx__contact__location__contactInfo--email">' . get_field('email') . '</a>';
 					}
 
 					if (get_field('phone_number_')) {
-						echo '<a href="tel:' . get_field('phone_number') . '">' . get_field('phone_number_') . '</a>';
+						echo '<a href="tel:' . get_field('phone_number') . '" class="vlx__contact__location__contactInfo--phone">' . get_field('phone_number_') . '</a>';
 					}
 					echo '</div>';
 				}
@@ -81,6 +83,7 @@ get_header();
 		}
 
 	endwhile; // End of the loop.
+	echo '</section>';
 	?>
 </main><!-- #main -->
 

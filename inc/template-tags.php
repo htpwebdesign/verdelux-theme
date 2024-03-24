@@ -127,7 +127,7 @@ if ( ! function_exists( 'verdelux_theme_post_thumbnail' ) ) :
 		if ( is_singular() ) :
 			?>
 
-			<div class="post-thumbnail">
+			<div class="post-thumbnail vlx__home__banner--image">
 				<?php the_post_thumbnail(); ?>
 			</div><!-- .post-thumbnail -->
 
