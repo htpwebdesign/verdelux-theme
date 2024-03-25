@@ -81,7 +81,7 @@ get_header();
                             $label = $field_object['label'];
 
                             if ($key === 'location_name_') {
-                                echo '<h3 class="vlx__home__locations--name"' . $value . '</h3>';
+                                echo '<h3 class="vlx__home__locations--name">' . $value . '</h3>';
                             }
 
                             if ($key === 'address') {
