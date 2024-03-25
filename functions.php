@@ -148,20 +148,24 @@ function verdelux_theme_scripts()
 	wp_enqueue_style(
 		'verdelux-textfont', //custom texts from google fonts : work sans & eagle lake 
 		'https://fonts.googleapis.com/css2?family=Eagle+Lake&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap',
-		array(), 
+		array(),
 		null
-	); 
+	);
 
 	wp_enqueue_style('verdelux-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_enqueue_style('verdelux-theme-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('verdelux-theme-style', 'rtl', 'replace');
-
 	wp_enqueue_script('verdelux-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
-	wp_enqueue_script('verdelux-theme-jobPostDescripToggle', get_template_directory_uri() . '/js/jobPostDescripToggle.js', array(), _S_VERSION);
-	wp_enqueue_script('googleMaps', get_template_directory_uri() . '/js/googleMaps.js', array('googleMapsKey', 'jquery'), '1.0.0', true);
-	wp_enqueue_script('googleMapsKey', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAgKjLxZAbjdoqpa8zcmIMhu53vA6h9xYU&callback=Function.prototype', array(), '1.0', true);
 
-	wp_enqueue_style('slick-css' , get_template_directory_uri() . '/slick/slick.css');
+	wp_enqueue_script('verdelux-theme-jobPostDescripToggle', get_template_directory_uri() . '/js/jobPostDescripToggle.js', array(), _S_VERSION);
+
+	// check if page is contact page - output the location information 
+	if (is_page($page = 'contact')) {
+		wp_enqueue_script('googleMaps', get_template_directory_uri() . '/js/googleMaps.js', array('googleMapsKey', 'jquery'), '1.0.0', true);
+		wp_enqueue_script('googleMapsKey', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAgKjLxZAbjdoqpa8zcmIMhu53vA6h9xYU&callback=Function.prototype', array(), '1.0', true);
+		wp_enqueue_style('google-maps', get_template_directory_uri() . './google-maps.css');
+	}
+	wp_enqueue_style('slick-css', get_template_directory_uri() . '/slick/slick.css');
 	wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css');
 
 	wp_enqueue_script('slick-js', get_template_directory_uri() . '/slick/slick.js', array('jquery'), '1.0', true);
@@ -285,7 +289,3 @@ function vdx_change_testimonial_title($title, $post_type)
 	return $title;
 }
 add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
-
-
-
-

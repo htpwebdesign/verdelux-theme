@@ -46,11 +46,15 @@ get_header();
 					if (get_field('location_name_')) {
 						echo '<h2 class="vlx__contact__location--locationTitle">' . get_field('location_name_') . '</h2>';
 					}
-
-					if (get_field('map_location')) {
-						var_dump(get_field('map_location'));
-						// echo '<p class="vlx__contact__location--map">' . the_field('location_name_') . '</p>';
-					}
+					
+					$location = get_field('map_location');
+					if( $location ): ?>
+						 <div class="acf-map" data-zoom="16">
+							  <div class="marker" data-lat="<?php echo esc_attr($location['lat']); ?>" data-lng="<?php echo esc_attr($location['lng']); ?>">
+							  <p><em><?php echo esc_html( $location['address'] ); ?></em></p>
+							</div>
+						 </div>
+					<?php endif; 
 
 					if (get_field('address')) {
 						echo '<p class="vlx__contact__location--address">' . get_field('address') . '</p>';
