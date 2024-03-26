@@ -5,7 +5,7 @@
 	position: relative;
 
 	.custom-logo {
-		width: 15rem;
+		width: 12rem;
 		position: absolute;
 		top: 0.5rem;
 		margin: 0rem 0 0.5rem 0.5rem;
@@ -20,7 +20,7 @@
     flex-wrap: wrap;
     align-content: flex-end;
 
-	// Mobile hamburger menu
+	
 	.nav-menu {
 		flex-direction: column;
 	}
@@ -30,7 +30,7 @@
 		margin: 0 0 1rem 0;
 	}
 
-	// End Mobile hamburger menu
+	
 
 	ul {
 		display: none;
@@ -106,11 +106,7 @@
 		color: $color_accent;
 	}
 
-	// Hide from all pages except for home
-	.custom-logo{
-		display: none;
-	}
-
+	
 	.current_page_item > a,
 	.current-menu-item > a,
 	.current_page_ancestor > a,
@@ -125,8 +121,8 @@
 	background-color: #fff;
 	border: none;
 	justify-content: flex-end;
-	margin: 0 0 1rem 0;
 	width: 100%;
+	margin: 0;
 }
 
 // Change hamburger svg colors
@@ -134,26 +130,6 @@
 .path2,
 .path3 {
     stroke: $color-button-bg;
-}
-
-
-
-// For desktop screens
-@media screen and (min-width: 37.5em) {
-
-	.menu-toggle {
-		display: none;
-	}
-
-	.main-navigation ul {
-		display: flex;
-		
-	}
-
-	.menu.nav-menu {
-		flex-direction: row;
-		margin: 1rem;
-	}
 }
 
 .comment-navigation,
@@ -179,19 +155,105 @@
 }
 
 
-// Custom header style for home
-
+// Custom header styles for home
 .page-id-18 {
 
-	.vlx__home__banner--image{
+	.site-main .home-custom-header img{
+		display: block;
 		position: relative;
+		z-index: 1;
+		object-fit: cover;
+    	max-height: 40rem;
+		height: unset;
 	}
 
+	.header-content svg {
+		width: 10rem;
+	}
+
+	.site-branding,
 	.custom-logo {
+		display: none;
+		top: 0;
+		right: 10rem;
+	}
+
+	.menu-toggle {
 		position: absolute;
-		top: 10rem;
-    	left: 2.5rem;
-    	z-index: 1000;
+		top: 1rem;
+		right: 0;
+		z-index: 70000;
+		background: none;
+	}
+
+	.main-navigation{
+		position: absolute;
+		top: 0;
+	}
+
+	.main-navigation.toggled ul  {
+		position: absolute;
+		top: 4rem;
+		right: 0;
+		z-index: 10000;
+		background: #fff;
+		padding: 1rem;
+
+	}
+
+	.nav-menu {
+		display: flex;
+		flex-direction: column;
+	}
+
+
+	// Change the hamburger button color to white
+	.path1,
+	.path2,
+	.path3 {
+    stroke: $color__background-body;
+	}
+
+	.home-logo {
+	position: absolute;
+	top: 7rem;
+	left: 5rem;
+	z-index: 10;
+	width: fit-content;
+	}
+
+	.home-logo svg {
+		max-height: 4rem;
+		background: $color_tan-bg;
+		padding: 0;
 	}
 
 }
+
+// For desktop screens
+@media screen and (min-width: 37.5em) {
+
+	.menu-toggle {
+		display: none;
+	}
+
+	.main-navigation ul {
+		display: flex;
+	}
+
+	 .main-navigation .menu-menu-1-container .menu {
+		position: absolute;
+		top: 5rem;
+		right: 0;
+		z-index: 30000;
+		background-color: $color_tan-bg;
+		width: fit-content;
+		margin: 0;
+		display: flex;
+		flex-direction: row;
+		margin: 1rem;
+		padding: 1rem;
+			
+	}
+		
+	}

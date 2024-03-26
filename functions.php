@@ -289,3 +289,9 @@ function vdx_change_testimonial_title($title, $post_type)
 	return $title;
 }
 add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
+
+
+// Remove margin top space for admin bar on mobile
+add_theme_support( 'admin-bar', array( 'callback' => '__return_false' ) );
+
+
