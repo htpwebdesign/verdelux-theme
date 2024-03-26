@@ -46,7 +46,7 @@
 		</div><!-- .site-branding -->
 
 		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php echo file_get_contents('C:\MAMP\htdocs\verdelux\wp-content\themes\verdelux-theme\images\hamburger-button.php'); ?></button>
+			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php include 'images/hamburger-button.php'; ?></button>
 			<?php
 			the_custom_logo();
 			wp_nav_menu(
