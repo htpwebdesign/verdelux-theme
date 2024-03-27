@@ -1,134 +1,112 @@
+/* Import */
 @import 'sass/abstracts/variables/colors';
 
-// Mobile styles of all pages except home page
-.site-header{
-
+/* Base styles */
+.site-header {
 	margin-top: 0.5rem;
 	position: relative;
-
-	.site-branding {
-		width: 12rem;
-		position: static;
-		top: 0.5rem;
-		margin: 0rem 0 0.5rem 0.5rem;
-	}
 }
 
+.site-branding {
+	width: 12rem;
+	position: static;
+	top: 0.5rem;
+	margin: 0.5rem;
+}
 
 .main-navigation {
 	display: flex;
-    width: 100%;
-    flex-direction: column;
-    flex-wrap: wrap;
-    align-content: flex-end;
+	width: 100%;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-content: flex-end;
 	margin-top: 0.5rem;
+}
 
-	
-	.main-navigation.toggled .nav-menu {
-		flex-direction: column;
-		width: 100%;
-	}
+.menu-menu-1-container {
+	text-align: center;
+	margin: 0 0 1rem;
+	position: absolute;
+	top: 4rem;
+	right: 0;
+	z-index: 6;
+	width: 100%;
+	display: flex;
+}
 
-	.menu-menu-1-container {
-		text-align: center;
-		margin: 0 0 1rem 0;
-		position: absolute;
-		top: 4rem;
-		right: 0;
-		z-index: 6;
-		width: 100%;
-		display: flex;
-		
-	}
+ul {
+	display: none;
+	list-style: none;
+	margin: 0;
+	padding-left: 0;
+	gap: 1rem;
+	justify-content: flex-end;
+	flex-direction: column;
+}
 
-	.main-navigation.toggled {
-		z-index: 100000;
-	}
+/* Navigation styles */
+.main-navigation.toggled .nav-menu,
+.main-navigation.toggled ul {
+	flex-direction: column;
+	width: 100%;
+}
 
-	
+ul ul {
+	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
+	float: left;
+	position: absolute;
+	top: 100%;
+	left: -999em;
+	z-index: 99999;
+}
 
-	ul {
-		display: none;
-		list-style: none;
-		margin: 0;
-		padding-left: 0;
-		gap: 1rem;
-		justify-content: flex-end;
-		flex-direction: column;
+ul ul ul {
+	left: -999em;
+	top: 0;
+}
 
-		ul {
-			box-shadow: 0 3px 3px rgba(0, 0, 0, 0.2);
-			float: left;
-			position: absolute;
-			top: 100%;
-			left: -999em;
-			z-index: 99999;
+li:hover > ul,
+li.focus > ul {
+	display: block;
+	left: auto;
+}
 
-			ul {
-				left: -999em;
-				top: 0;
-			}
+li {
+	position: relative;
+	margin-bottom: 1rem;
+}
 
-			li {
+a {
+	display: block;
+	text-decoration: none;
+	color: $color_titles;
+}
 
-				
+a:hover,
+a.focus {
+	color: $color_accent;
+}
 
-				&:hover > ul,
-				&.focus > ul {
-					display: block;
-					left: auto;
-				}
-			}
+.current_page_item > a,
+.current-menu-item > a,
+.current_page_ancestor > a,
+.current-menu-ancestor > a {
+}
 
-			a {
-				width: 200px;
-				
-			}
-
-		}
-
-		li:hover > ul,
-		li.focus > ul {
-			left: auto;
-		}
-	}
-
-	li {
-		position: relative;
-		margin-bottom: 1rem;
-		
-
-		&:hover > a,
-		&.focus > a {
-		}
-	}
-
-	a {
-		display: block;
-		text-decoration: none;
-		color: $color_titles ;
-	}
-
-	a:hover,
-	a.focus {
-		color: $color_accent;
-	}
-
-	
-	.current_page_item > a,
-	.current-menu-item > a,
-	.current_page_ancestor > a,
-	.current-menu-ancestor > a {
-	}
-
-	.nav-menu {
+.nav-menu {
 	position: absolute;
 	top: 5rem;
 	right: 0;
 }
+
+.nav-menu li {
+	margin-bottom: 0;
 }
 
-/* Small menu. */
+.nav-menu a {
+	color: $color_titles;
+}
+
 .menu-toggle,
 .main-navigation.toggled ul {
 	position: absolute;
@@ -140,174 +118,124 @@
 	border: none;
 	justify-content: flex-end;
 	width: fit-content;
-	margin: 1rem 0 0 0;
+	margin: 1rem 0 0;
 }
 
-.main-navigation.toggled ul {
-	width: 100%;
-	margin-top: 0;
+/* Custom header styles for home */
+.page-id-18 .site-header {
+	margin: 0;
 }
 
-// Change hamburger svg colors
-.path1,
-.path2,
-.path3 {
-    stroke: $color-button-bg;
+.page-id-18 .home-custom-header img {
+	display: block;
+	position: relative;
+	z-index: 1;
+	height: 30rem;
+	object-fit: cover;
+	margin-bottom: 3rem;
 }
 
-.comment-navigation,
-.posts-navigation,
-.post-navigation {
-
-	.site-main & {
-		margin: 0 0 1.5em;
-	}
-
-	.nav-links {
-		display: flex;
-	}
-
-	.nav-previous {
-		flex: 1 0 50%;
-	}
-
-	.nav-next {
-		text-align: end;
-		flex: 1 0 50%;
-	}
+.page-id-18 .header-content svg {
+	width: 15rem;
 }
 
+.page-id-18 .site-branding,
+.page-id-18 .custom-logo {
+	display: none;
+	top: 0;
+	right: 10rem;
+}
 
-// Custom header styles for home
-.page-id-18 {
+.page-id-18 .menu-toggle {
+	position: absolute;
+	top: 0;
+	right: 0;
+	z-index: 70000;
+	background: none;
+	margin: 0;
+}
 
-	.site-header {
-		margin: 0;
-	}
+.page-id-18 .main-navigation {
+	position: absolute;
+	top: 1.75rem;
+}
 
-	.home-custom-header img {
-		display: block;
-		position: relative;
-		z-index: 1;
-		height: 30rem;
-		object-fit: cover;
-		margin-bottom: 3rem;
-	}
+.page-id-18 .main-navigation.toggled {
+	z-index: 11;
+}
 
-	.header-content svg {
-		width: 15rem;
-	}
+.page-id-18 .main-navigation.toggled ul {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background: #fff;
+	padding: 1rem;
+}
 
-	.site-branding,
-	.custom-logo {
-		display: none;
-		top: 0;
-		right: 10rem;
-		
-	}
+.page-id-18 .path1,
+.page-id-18 .path2,
+.page-id-18 .path3 {
+	stroke: $color__background-body;
+}
 
-	.menu-toggle {
-		position: absolute;
-		top: 0;
-		right: 0;
-		z-index: 70000;
-		background: none;
-		margin: 0;
-	}
-
-	.main-navigation{
-		position: absolute;
-		top: 0;
-	}
-
-	.main-navigation.toggled {
-		z-index: 11;
-	}
-
-	.main-navigation.toggled ul {
-		position: absolute;
-		top: 0;
-		right: 0;
-		background: #fff;
-		padding: 1rem;
-
-	}
-	
-	// Change the hamburger button color to white
-	.path1,
-	.path2,
-	.path3 {
-    stroke: $color__background-body;
-	}
-
-	.home-logo {
+.page-id-18 .home-logo {
 	position: absolute;
 	top: 8rem;
 	left: 2.5rem;
 	z-index: 10;
 	width: fit-content;
-	}
-
-	.home-logo svg {
-		max-height: 5rem;
-		background: $color_tan-bg;
-		padding: 0.5rem;
-	}
-
-	.tagline{
-		display: flex;
-		position: absolute;
-		top: 14rem;
-		left: 2rem;
-		background: $text_bg_light;
-		margin: 0;
-		width: 80%;
-		padding: 1rem;
-		z-index: 2;
-		color: #fff;
-	}
-
-	#cta {
-		position: absolute;
-		top: 23rem;
-		left: 6rem;
-		background: $color_titles;
-		text-decoration: none;
-		color: #fff;
-		padding: 1rem;
-		z-index: 4;
-		background-color: $color_titles;
-		width: 8rem;
-		display: flex;
-		justify-content: center;
-		
-
-	}
-
-	.vlx__home__banner {
-		display: none;
-	}
-
 }
 
-// Large mobile home screen
+.page-id-18 .home-logo svg {
+	max-height: 5rem;
+	background: $color_tan-bg;
+	padding: 0.5rem;
+}
+
+.page-id-18 .tagline {
+	display: flex;
+	position: absolute;
+	top: 14rem;
+	left: 2rem;
+	background: $text_bg_light;
+	margin: 0;
+	width: 80%;
+	padding: 1rem;
+	z-index: 2;
+	color: #fff;
+}
+
+.page-id-18 #cta {
+	position: absolute;
+	top: 23rem;
+	left: 6rem;
+	background: $color_titles;
+	text-decoration: none;
+	color: #fff;
+	padding: 1rem;
+	z-index: 4;
+	background-color: $color_titles;
+	width: 8rem;
+	display: flex;
+	justify-content: center;
+}
+
+.page-id-18 .vlx__home__banner {
+	display: none;
+}
+
+/* Responsive styles */
 @media screen and (min-width: 36em) {
-
-	.page-id-18 {
-		#cta{
-			left: 14rem;
-		}
+	.page-id-18 #cta {
+		left: 14rem;
 	}
 }
 
-// For desktop screens
 @media screen and (min-width: 48em) {
-
-	.site-header{
+	.site-header {
 		position: static;
 	}
 
-	
 	.menu-toggle {
 		display: none;
 	}
@@ -321,98 +249,81 @@
 		margin: 0 1rem 0 0;
 	}
 
-	 .main-navigation .menu-menu-1-container .menu {
+	.main-navigation .menu-menu-1-container .menu {
 		position: absolute;
-		top: 1.75rem;
+		top: 0;
 		right: 0;
 		z-index: 30000;
 		width: fit-content;
 		margin: 0;
 		display: flex;
 		flex-direction: row;
-			
 	}
 
-	// Desktop Home Page
+	.page-id-18 .main-navigation .menu-menu-1-container .menu {
+		top: 0;
+		background-color: $color_tan-bg;
+		padding: 1rem;
+		font-size: 1.5rem;
+	}
 
-	.page-id-18 {
+	.page-id-18 .header-content svg {
+		width: 20rem;
+	}
 
-		.main-navigation .menu-menu-1-container .menu {
-			top: 0;
-			background-color: $color_tan-bg;
-			padding: 1rem 1rem 0 1rem;
-			font-size: 1.5rem;
-		}
+	.page-id-18 .home-custom-header img {
+		height: 61rem;
+	}
 
-		.header-content svg {
-			width: 20rem;
-		}
+	.page-id-18 .home-logo {
+		top: 15rem;
+	}
 
-		.home-custom-header img {
-			height: 61rem;
-		}
+	.page-id-18 .home-logo svg {
+		padding: 0.3rem;
+		max-height: none;
+		height: 8rem;
+	}
 
-		.home-logo {
-			top: 15rem;
-		}
+	.page-id-18 .tagline {
+		left: 3rem;
+		display: flex;
+		flex-wrap: wrap;
+		position: absolute;
+		top: 30rem;
+		max-width: 50%;
+		font-size: 1.5rem;
+	}
 
-		.home-logo svg {
-			padding: 0.3rem;
-			max-height: none;
-			height: 8rem;
-		}
+	.page-id-18 #cta {
+		top: 45rem;
+		left: 17rem;
+		font-size: 1.5rem;
+		width: 15rem;
+		display: flex;
+		justify-content: center;
+	}
 
-		.tagline {
+	@media screen and (min-width: 80em) {
+		.page-id-18 .tagline {
+			left: 35rem;
 			display: flex;
-			flex-wrap: wrap;
-			position: absolute;
-			top: 30rem;
-			left: 3rem;
-			max-width: 50%;
-			font-size: 1.5rem;
+			font-size: 2rem;
 		}
 
-		#cta {
-			top: 45rem;
-			left: 17rem;
-			font-size: 1.5rem;
-			width: 15rem;
-			display: flex;
-			justify-content: center;
+		.page-id-18 #cta {
+			left: 34rem;
+			font-size: 2rem;
 		}
 
-		// Larger Desktop Screens
-	
+		@media screen and (min-width: 100em) {
+			.page-id-18 .tagline {
+				left: 50rem;
+			}
 
-		@media screen and (min-width: 80em) {
-				.tagline {
-						left: 35rem;
-						display: flex;
-						font-size: 2rem;
-				}
-
-					#cta {
-						left: 34rem;
-						font-size: 2rem;
-				}
-
-				@media screen and (min-width: 100em) {
-
-					.tagline {
-						left: 50rem;
-					}
-
-					#cta {
-						left: 50rem;
-					}
-				}
-
-
+			.page-id-18 #cta {
+				left: 50rem;
 			}
 		}
-
 	}
-	
-	
-
-
+}
