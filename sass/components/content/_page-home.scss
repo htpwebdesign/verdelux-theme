@@ -10,15 +10,27 @@
 }
 
 // Desktop Styles
-@media screen and (min-width: 70em) {
+@media screen and (min-width: 63em) {
+
+    .vlx-location-section {
+        padding: 3rem;
+    }
 
     .vlx__home__location--title {
-
+        text-align: center;
     }
 
     .vlx-location-card{
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .vlx-location-card img {
+        width: 20rem;
+        height: 20rem;
+        object-fit: cover;
     }
     
     .vlx__home__locations--location {
