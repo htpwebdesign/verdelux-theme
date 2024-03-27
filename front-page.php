@@ -26,8 +26,6 @@ get_header();
 
     ?>
 
-    
-
     <section id="home-header" class="home-custom-header">
         <?php 
         if (get_field('home_banner_image')) {
@@ -175,7 +173,6 @@ get_header();
                 <section class="vlx__home__testimonials--reviews reviews">
                     <h3 class="vlx__home__testimonials--reviewsTitle">Reviews</h3>
                     <section class="vlx_reviews_card">
-                        
 
                         <?php
                         $args = array(
