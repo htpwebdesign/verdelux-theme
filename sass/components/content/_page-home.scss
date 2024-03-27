@@ -24,12 +24,12 @@
     align-items: center;
 }
 
+.location-info {
+    max-width: 18.75rem;
+}
+
 // Desktop Styles
 @media screen and (min-width: 63em) {
-
-    .vlx-location-section {
-        
-    }
 
 
     .vlx-location-card{
@@ -38,14 +38,15 @@
     }
 
     .vlx-location-card img {
-       max-width: 300px;
+       width: 18.75rem;
+       height: 18.75rem;
        object-fit: cover;
     }
     
     .vlx__home__locations--location {
         display: flex;
         gap: 8rem;
-        max-width: 885.02px;
+        max-width: 41.75rem;
     }
 
 }
