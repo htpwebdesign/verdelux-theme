@@ -1,5 +1,10 @@
 
 
+.vlx__home__testimonials--reviewsTitle{
+    text-align: center;
+
+}
+
 .vlx__home__testimonials--reviewContent {
     width: 19rem;
 
@@ -13,7 +18,13 @@
 }
 
 // Responsive Styles
-@media screen and (min-width: 72em) {
+@media screen and (min-width: 40em) {
+    .vlx_reviews_card {
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (min-width: 70em) {
     .vlx_reviews_card {
         justify-content: center;
     }
