@@ -65,10 +65,13 @@ get_header();
 								<h3 class="vlx__career__jobPost__post--title"> Position: ' . get_field('job_listing') . '</h3>
 								<p class="vlx__career__jobPost__post--location">Location: ' . $location_list . '</p>
 							</header>
-							<div class=" vlx__career__jobPost__post--description job-description " style="display: none">' . $description . '</div>
+
+							<div class="vlx__career__jobPost__post--description job-description" style="display: none">' . $description . '</div>
+							 
 							<footer class="vlx__career__jobPost__post--footer">
-								<button class="vlx__career__jobPost__post--viewMore view-more"> View Job Posting</button>
+							<button class="vlx__career__jobPost__post--viewMore view-more"  > View Job Posting</button>
 							</footer>
+							
 						</article>';
 
 					endwhile;

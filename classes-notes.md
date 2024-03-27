@@ -105,7 +105,7 @@
 
   .vlx__menu__category
   .vlx__menu__category--title
-  .vlx__menu__category__item--tex
+  .vlx__menu__category__item--text
   .vlx__menu__category__item--allergen
 
 ### ABOUT PAGE CLASSESS
