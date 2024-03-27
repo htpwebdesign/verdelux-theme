@@ -74,68 +74,90 @@ get_header();
                 </article>
             </section>
 
-            <section class="location-section vlx__home__locations">
+            <section class="vlx-location-section vlx__home__locations">
                 <h2 class=" vlx__home__location--title">Locations</h2>
-                <?php
-                $args = array(
-                    'post_type'      => 'vdx-location',
-                    'posts_per_page' => -1
-                );
-                $location_query = new WP_Query($args);
+                    <section class="vlx-location-card">
+                        <?php
+                        $args = array(
+                            'post_type'      => 'vdx-location',
+                            'posts_per_page' => -1
+                        );
+                        $location_query = new WP_Query($args);
 
-                if ($location_query->have_posts()) :
-                    $counter = 0; // Initialize counter variable
-                    while ($location_query->have_posts()) :
-                        $location_query->the_post();
-                        $counter++; // Increment counter for each location entry
-                ?>
-                        <article class="vlx__home__locations--location location-entry-<?php echo $counter; ?>">
-                            <?php
-                            // Get all the ACF fields for the post
-                            $fields = get_fields();
+                        if ($location_query->have_posts()) :
+                            $counter = 0; // Initialize counter variable
+                            while ($location_query->have_posts()) :
+                                $location_query->the_post();
+                                $counter++; // Increment counter for each location entry
+                        ?>
+                                <article class="vlx__home__locations--location location-entry-<?php echo $counter; ?>">
+                                    <?php
+                                    // Get all the ACF fields for the post
+                                    $fields = get_fields();
 
-                            // Initialize variables to store image data
-                            $image = get_field('location_image');
-                            $image_output = '';
+                                    // Initialize variables to store image data
+                                    $image = get_field('location_image');
+                                    $image_output = '';
 
-                            // Check if image is available
-                            if ($image) {
-                                $size = 'large';
-                                $image_output = wp_get_attachment_image($image, $size);
-                                echo $image_output; // Output the image
-                            }
+                                    // Check if image is available
+                                    if ($image) {
+                                        $size = 'large';
+                                        $image_output = wp_get_attachment_image($image, $size);
+                                        echo $image_output; // Output the image
+                                    }
 
-                            // Output other fields except email
-                            foreach ($fields as $key => $value) {
-                                $field_object = get_field_object($key);
-                                $label = $field_object['label'];
+                                   // Check if any of the fields exist
+                                    if (isset($fields['location_name_']) || isset($fields['address']) || isset($fields['phone_number_']) || isset($fields['email'])) {
+                                        echo '<div class="location-info">';
+                                    }
 
-                                if ($key === 'location_name_') {
-                                    echo '<h3 class="vlx__home__locations--name">' . $value . '</h3>';
-                                }
+                                    // Output location name
+                                    if (isset($fields['location_name_'])) {
+                                        $location_name = $fields['location_name_'];
+                                        echo '<div class="location-name">';
+                                        echo '<h3 class="vlx__home__locations--name">' . $location_name . '</h3>';
+                                        echo '</div>';
+                                    }
 
-                                if ($key === 'address') {
-                                    echo '<p class="vlx__home__locations--address">' . $value . '</p>';
-                                }
+                                    // Output address
+                                    if (isset($fields['address'])) {
+                                        $address = $fields['address'];
+                                        echo '<div class="location-address">';
+                                        echo '<div>';
+                                        echo '<p class="vlx__home__locations--address">' . $address . '</p>';
+                                        echo '</div>';
+                                        echo '</div>';
+                                    }
 
-                                if ($key === 'phone_number_') {
-                                    echo '<p class="vlx__home__locations--phone">' . $value . '</p>';
-                                }
-                            }
+                                    // Output phone number
+                                    if (isset($fields['phone_number_'])) {
+                                        $phone_number = $fields['phone_number_'];
+                                        echo '<div class="location-number">';
+                                        echo '<p class="vlx__home__locations--phone">' . $phone_number . '</p>';
+                                        echo '</div>';
+                                    }
 
-                            // Output the email
-                            if (isset($fields['email'])) {
-                                echo '<a href="mailto:' . $fields['email'] . '" class="vlx__home__locations--email">' . $fields['email'] . '</a>';
-                            }
+                                    // Output email
+                                    if (isset($fields['email'])) {
+                                        $email = $fields['email'];
+                                        echo '<div class="location-email">';
+                                        echo '<a href="mailto:' . $email . '" class="vlx__home__locations--email">' . $email . '</a>';
+                                        echo '</div>';
+                                    }
 
-                            ?>
-                        </article>
+                                    // Close the grouping div if any of the fields exist
+                                    if (isset($fields['location_name_']) || isset($fields['address']) || isset($fields['phone_number_']) || isset($fields['email'])) {
+                                        echo '</div>';
+                                    }
 
-                <?php
-                    endwhile;
-                endif;
-                wp_reset_postdata(); // Reset post data after custom query
-                ?>
+                                    ?>
+                                </article>
+                    <?php
+                        endwhile;
+                    endif;
+                    wp_reset_postdata(); // Reset post data after custom query
+                    ?>
+                </section>
             </section>
 
             <section class="vlx__home__testimonials testimonials">

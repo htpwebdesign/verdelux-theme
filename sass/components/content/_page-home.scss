@@ -1,6 +1,29 @@
 //Home page custom styling margin
-
 .vlx_main {
 	margin: 0 0.5rem 0 0.5rem;
 }
 
+// Home Page custom location styling
+
+.vlx-location-section {
+    background-color: $color_tan-bg;
+}
+
+// Desktop Styles
+@media screen and (min-width: 70em) {
+
+    .vlx__home__location--title {
+
+    }
+
+    .vlx-location-card{
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    
+    .vlx__home__locations--location {
+        display: flex;
+        gap: 8rem;
+    }
+
+}
