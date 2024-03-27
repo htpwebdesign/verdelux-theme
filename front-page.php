@@ -48,7 +48,7 @@ get_header();
             $call_to_action = get_field('call_to_action');
             if ($call_to_action) {
                 $escaped_call_to_action = esc_url($call_to_action);
-                echo '<a href="' . $escaped_call_to_action . '" class="call_to_action">Menu</a>'; 
+                echo '<a href="' . $escaped_call_to_action . '" id="cta" class="call_to_action">Menu</a>'; 
             }
             ?>
         </div>
