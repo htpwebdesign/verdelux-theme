@@ -99,7 +99,7 @@ get_header();
 
                                     // Check if image is available
                                     if ($image) {
-                                        $size = 'large';
+                                        $size = 'medium';
                                         $image_output = wp_get_attachment_image($image, $size);
                                         echo $image_output; // Output the image
                                     }

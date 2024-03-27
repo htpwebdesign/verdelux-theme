@@ -7,35 +7,45 @@
 
 .vlx-location-section {
     background-color: $color_tan-bg;
+    padding: 2rem;
+}
+
+.vlx__home__location--title {
+    text-align: center;
+}
+
+.vlx__home__locations--address {
+    max-width: 240px;
+}
+
+.vlx-location-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 // Desktop Styles
 @media screen and (min-width: 63em) {
 
     .vlx-location-section {
-        padding: 3rem;
+        
     }
 
-    .vlx__home__location--title {
-        text-align: center;
-    }
 
     .vlx-location-card{
-        display: flex;
-        flex-direction: column;
         align-items: center;
         gap: 2rem;
     }
 
     .vlx-location-card img {
-        width: 20rem;
-        height: 20rem;
-        object-fit: cover;
+       max-width: 300px;
+       object-fit: cover;
     }
     
     .vlx__home__locations--location {
         display: flex;
         gap: 8rem;
+        max-width: 885.02px;
     }
 
 }
