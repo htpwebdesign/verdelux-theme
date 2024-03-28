@@ -1,0 +1,32 @@
+
+.vlx__home__testimonials--title,
+.vlx__home__testimonials--IGTitle,
+.vlx__home__testimonials--reviewsTitle {
+    text-align: center;
+}
+
+
+.vlx__home__testimonials--reviewContent {
+    width: 19rem;
+
+}
+
+.vlx_reviews_card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+
+// Responsive Styles
+@media screen and (min-width: 40em) {
+    .vlx_reviews_card {
+        justify-content: flex-start;
+    }
+}
+
+@media screen and (min-width: 70em) {
+    .vlx_reviews_card {
+        justify-content: center;
+    }
+}

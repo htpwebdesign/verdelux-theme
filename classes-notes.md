@@ -32,6 +32,14 @@
       .vlx__footer--navRight/menu-social-media-menu-container(div)/menu-social-media-menu(ul)
         .vlx__footer--navRight/menu-social-media-menu-container(div)/menu-social-media-menu(ul)/menu-item(li)
 
+### 404 PAGE CLASSES
+
+  .vlx__404
+  .vlx__404--header
+  .vlx__404__header--title
+  .vlx__404--content
+  .vlx__404__content--msg
+
 ### HOME PAGES CLASSES
 
 #### Home Page Banner
