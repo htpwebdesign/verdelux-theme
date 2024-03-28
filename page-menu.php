@@ -52,7 +52,7 @@ get_header();
 				'meta_key' => 'menu_order',
 
 			));
-			echo '<ul class="vlx__menu__tabs--list">';
+			echo '<ul class="vlx__menu__tabs--list" aria-label="Menu category tabs">';
 			foreach ($terms as $term) {
 				echo '<li class="vlx__menu__tabs--item">';
 				echo '<a class="vlx__menu__tabs--link menu-tab" data-filter="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a>';
@@ -127,8 +127,9 @@ get_header();
 							//Ingredients
 							if (function_exists('get_field')) {
 								$dish_ingredients = get_field('dish_ingredients');
-								echo $dish_ingredients;
+								echo '<p>' . $dish_ingredients . '</p>';
 							}
+
 							//Allergen symbols
 							$dish_legend = get_field('dish_legend');
 							if ($dish_legend) : ?>

@@ -57,14 +57,14 @@ get_header();
 					<?php endif; 
 
 					if (get_field('address')) {
-						echo '<p class="vlx__contact__location--address">' . get_field('address') . '</p>';
+						echo '<address class="vlx__contact__location--address">' . get_field('address') . '</address>';
 					}
 
 					if (get_field('hours')) {
 						if (is_array(get_field('hours'))) {
 							$hours = get_field('hours');
 
-							echo '<ul class="vlx__contact__location__hours--list">';
+							echo '<ul class="vlx__contact__location__hours--list" aria-label="Restaurant Hours: Day and time">';
 
 							foreach ($hours as $dayTime) {
 								echo '<li class="vlx__contact__location__hours--item">' . $dayTime['day'] . ' ' . $dayTime['time_'] . '</li>';
