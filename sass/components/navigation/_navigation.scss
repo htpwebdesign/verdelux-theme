@@ -49,6 +49,7 @@ ul {
 .main-navigation.toggled ul {
 	flex-direction: column;
 	width: 100%;
+	margin: 0;
 }
 
 ul ul {
@@ -151,7 +152,7 @@ a.focus {
 
 .page-id-18 .main-navigation {
 	position: absolute;
-	top: 1.75rem;
+	top: 1rem;
 }
 
 .page-id-18 .main-navigation.toggled {
