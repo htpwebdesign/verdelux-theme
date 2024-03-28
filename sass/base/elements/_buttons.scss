@@ -28,7 +28,20 @@ input[type="submit"] {
 }
 
 // Career Page - Job Posting Btns
-.page-id-28 .vlx__career__jobPost__post--viewMore{
+.page-id-28 .gform_page{
 	border-radius: 0.75rem;
 }
 
+.page-id-28 .gform_page_footer{
+   .button {
+	background-color: green;
+   }
+
+   .gform-theme-button{
+	background-color: green;
+   }
+ .gform_next_button .button{
+	background-color: $color_button_bg;
+}
+
+}
