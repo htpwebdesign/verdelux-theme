@@ -7,6 +7,10 @@
 	position: relative;
 }
 
+.site-header ul {
+	list-style-type: none;
+}
+
 .site-branding {
 	width: 12rem;
 	position: static;
@@ -35,8 +39,6 @@
 }
 
 ul {
-	display: none;
-	list-style: none;
 	margin: 0;
 	padding-left: 0;
 	gap: 1rem;
@@ -153,6 +155,10 @@ a.focus {
 .page-id-18 .main-navigation {
 	position: absolute;
 	top: 1rem;
+}
+
+.page-id-18 .nav-menu {
+	display: none;
 }
 
 .page-id-18 .main-navigation.toggled {
