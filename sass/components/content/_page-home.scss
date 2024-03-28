@@ -7,23 +7,52 @@
 
 .vlx-location-section {
     background-color: $color_tan-bg;
+    padding: 2rem;
+}
+
+.vlx__home__location--title {
+    text-align: center;
+}
+
+.vlx__home__locations--address {
+    max-width: 240px;
+}
+
+.vlx-location-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.vlx__home__locations--location {
+    padding-bottom: 4rem;
+    border-bottom: solid;
+    margin: 2rem;
+}
+
+.location-info {
+    max-width: 18.75rem;
 }
 
 // Desktop Styles
-@media screen and (min-width: 70em) {
+@media screen and (min-width: 63em) {
 
-    .vlx__home__location--title {
-
-    }
 
     .vlx-location-card{
-        display: flex;
-        flex-direction: column-reverse;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .vlx-location-card img {
+       width: 18.75rem;
+       height: 18.75rem;
+       object-fit: cover;
     }
     
     .vlx__home__locations--location {
         display: flex;
         gap: 8rem;
+        max-width: 41.75rem;
     }
 
 }

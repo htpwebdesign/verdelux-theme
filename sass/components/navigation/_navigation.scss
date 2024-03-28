@@ -49,6 +49,7 @@ ul {
 .main-navigation.toggled ul {
 	flex-direction: column;
 	width: 100%;
+	margin: 0;
 }
 
 ul ul {
@@ -85,12 +86,6 @@ a {
 a:hover,
 a.focus {
 	color: $color_accent;
-}
-
-.current_page_item > a,
-.current-menu-item > a,
-.current_page_ancestor > a,
-.current-menu-ancestor > a {
 }
 
 .nav-menu {
@@ -157,7 +152,7 @@ a.focus {
 
 .page-id-18 .main-navigation {
 	position: absolute;
-	top: 1.75rem;
+	top: 1rem;
 }
 
 .page-id-18 .main-navigation.toggled {

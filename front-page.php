@@ -97,12 +97,12 @@ get_header();
                                 $image = get_field('location_image');
                                 $image_output = '';
 
-                                // Check if image is available
-                                if ($image) {
-                                    $size = 'large';
-                                    $image_output = wp_get_attachment_image($image, $size);
-                                    echo $image_output; // Output the image
-                                }
+                                    // Check if image is available
+                                    if ($image) {
+                                        $size = 'medium';
+                                        $image_output = wp_get_attachment_image($image, $size);
+                                        echo $image_output; // Output the image
+                                    }
 
                                 // Check if any of the fields exist
                                 if (isset($fields['location_name_']) || isset($fields['address']) || isset($fields['phone_number_']) || isset($fields['email'])) {
