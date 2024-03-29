@@ -239,6 +239,7 @@ a.focus {
 		position: static;
 	}
 
+
 	.menu-toggle {
 		display: none;
 	}
@@ -254,7 +255,7 @@ a.focus {
 
 	.main-navigation .menu-menu-1-container .menu {
 		position: absolute;
-		top: 1.5rem;
+		top: 1.75rem;
 		right: 0;
 		z-index: 30000;
 		width: fit-content;
@@ -266,6 +267,10 @@ a.focus {
 	.nav-menu a:hover {
 		background-color: $color_accent;
 		color: #fff;
+	}
+
+	.page-id-18 .site-header {
+		padding: 0;
 	}
 
 	.page-id-18 .main-navigation .menu-menu-1-container .menu {
