@@ -209,7 +209,6 @@ add_filter( 'login_headertext', 'vdx_login_logo_url_title' );
 
 
 // Add google api key for ACF
-
 function google_api_acf_init($api)
 {
 
@@ -218,7 +217,17 @@ function google_api_acf_init($api)
 }
 add_filter('acf/fields/google_map/api', 'google_api_acf_init');
 
+// Add favicon
+function add_my_favicon() {
+    $theme_dir = get_stylesheet_directory_uri();
 
+    echo '<link rel="icon" href="' . esc_url($theme_dir) . '/favicon.ico" sizes="any" />' . PHP_EOL;
+    echo '<link rel="icon" href="' . esc_url($theme_dir) . '/favicon.svg" type="image/svg+xml" />' . PHP_EOL;
+    echo '<link rel="apple-touch-icon" href="' . esc_url($theme_dir) . '/apple-touch-icon.png"/>' . PHP_EOL;
+    echo '<link rel="manifest" href="' . esc_url($theme_dir) . '/site.webmanifest" />' . PHP_EOL;
+}
+
+add_action( 'wp_head', 'add_my_favicon' );
 
 /**
  * Implement the Custom Header feature.
