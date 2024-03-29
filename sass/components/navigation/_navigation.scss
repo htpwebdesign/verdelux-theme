@@ -254,13 +254,18 @@ a.focus {
 
 	.main-navigation .menu-menu-1-container .menu {
 		position: absolute;
-		top: 0;
+		top: 1.5rem;
 		right: 0;
 		z-index: 30000;
 		width: fit-content;
 		margin: 0;
 		display: flex;
 		flex-direction: row;
+	}
+
+	.nav-menu a:hover {
+		background-color: $color_accent;
+		color: #fff;
 	}
 
 	.page-id-18 .main-navigation .menu-menu-1-container .menu {
@@ -305,6 +310,10 @@ a.focus {
 		width: 15rem;
 		display: flex;
 		justify-content: center;
+	}
+
+	.page-id-18 #cta:hover {
+		background-color: $color_accent;
 	}
 
 	@media screen and (min-width: 80em) {
