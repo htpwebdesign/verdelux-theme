@@ -5,7 +5,7 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
 	border: 1px solid;
-	border-color: $color__border-button;
+	//border-color: $color__border-button;
 	border-radius: 3px;
 	background: $color-button-bg;
 	color: #ffffff;
@@ -32,16 +32,16 @@ input[type="submit"] {
 	border-radius: 0.75rem;
 }
 
-.page-id-28 .gform_page_footer{
-   .button {
-	background-color: green;
-   }
+// Career Page - Application Form 'Next' Btn 
+.page-id-28 .gform-body .gform_page_footer{
 
-   .gform-theme-button{
-	background-color: green;
-   }
- .gform_next_button .button{
 	background-color: $color_button_bg;
-}
+	//width: fit-content;
+    
+	.button{
+	background-color: $color_button_bg;
+
+	}
 
 }
+
