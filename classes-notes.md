@@ -13,7 +13,7 @@
 
 ## CSS
 
-#### Main
+### Main
 
   .vlx__main
 
@@ -87,7 +87,7 @@
     .vlx__home__testimonials--review/img
   .vlx__home_testimonials--reviewTitle
   .vlx__home_testimonials--reviewContent
-  .vlx__home_testimonials--reviewRating. 
+  .vlx__home_testimonials--reviewRating.
 
 ### MENU PAGE CLASSESS
 
