@@ -50,7 +50,6 @@
 }
 
 
-
 //About Page - 'Our Story' section 
 .page-id-24 .vlx__about__chef {
 
@@ -64,30 +63,25 @@
     .vlx__about__text--container {
         max-width: 100%;
     }
-}
 
-@media (min-width: 37.5em) { // 600px/16px
+    @media (min-width: 37.5em) { // 600px/16px
+        
+        .vlx__about__chef--title {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .vlx__about__chef--content {
+            display: flex; 
+            flex-wrap: wrap; // allow items to wrap on smaller screens
+            justify-content: center; // center the items horizontally
+            gap: 1rem; 
+        }
     
-    .vlx__about__chef--title{
-        font-size: 1.80rem;
-        margin-bottom: 3rem;
-        margin-top: 2rem;
+        .vlx__about__text--container {
+            max-width: 50%;
+            flex: 1 0 auto; // allow the text to grow and shrink as needed
+            text-align: left; 
+        } 
     }
-
-    .vlx__about__chef--content {
-        display: flex; 
-        flex-wrap: wrap; // allow items to wrap on smaller screens
-        justify-content: center;
-        gap: 1rem; 
-    }
-
-    .vlx__about__chef--image {
-        max-width: 50%; // image takes up half of the container width
-    }
-
-    .vlx__about__text--container {
-        max-width: 50%;
-        flex: 1 0 auto; // allow the text to grow and shrink as needed
-        text-align: left; 
-    } 
 }

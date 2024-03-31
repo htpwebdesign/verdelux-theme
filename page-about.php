@@ -24,7 +24,7 @@ get_header();
 		the_post();
 		get_template_part('template-parts/content', 'page');
 	?>
-
+	
 		<section class="vlx__about__chef about-chef">
 			<?php
 			if (function_exists('get_field')) {
@@ -42,11 +42,11 @@ get_header();
 				
 				if (get_field('chef_about')) {
 					echo '<div class="vlx__about__text--container">'; //flex container
-					echo '<p class=="vlx__about__chef--text">' . get_field('chef_about') . '</p>';
-					echo '</div>'; // Close vlx__about__chef--container
+					echo '<p class="vlx__about__chef--text">' . get_field('chef_about') . '</p>';
+					echo '</div>'; // Close
 				}
+				echo '</div>';
 			}
-			echo '</div>';
 			?>
 		</section>
 
