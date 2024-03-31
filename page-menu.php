@@ -75,9 +75,9 @@ get_header();
 			"Alcohol" => 'images/alcohol'
 		);
 
-		echo '<div>';
+		echo '<div class="vlx__menu__allergen--container">';
 		foreach ($allergens as $allergen => $image) {
-			echo '<div class="vlx__menu__allergen--container">';
+			echo '<div class="vlx__menu__allergen--item">';
 			echo '<p class="vlx__menu__allergen--text">' . $allergen . '</p>' . get_template_part($image);
 			echo '</div>';
 		}

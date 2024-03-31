@@ -67,7 +67,7 @@ get_header();
 							echo '<ul class="vlx__contact__location__hours--list" aria-label="Restaurant Hours: Day and time">';
 
 							foreach ($hours as $dayTime) {
-								echo '<li class="vlx__contact__location__hours--item">' . $dayTime['day'] . ' ' . $dayTime['time_'] . '</li>';
+								echo '<li class="vlx__contact__location__hours--item">' . $dayTime['day'] . '<br>' . $dayTime['time_'] . '</li>';
 							}
 							echo '</ul>';
 						};

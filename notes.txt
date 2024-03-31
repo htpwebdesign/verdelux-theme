@@ -1,2 +1,9 @@
 // run gulp
 npx gulp
+
+/*
+Notes for discussion later
+empty P tag in the career section
+*/
+
+add a selected item click event for each job post listing

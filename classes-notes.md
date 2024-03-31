@@ -105,9 +105,10 @@
 #### Menu allergen Section
 
   .vlx__menu--allergen
-  .vlx__menu__allergen--title
   .vlx__menu__allergen--container
-  .vlx_meu__allergen--text
+  .vlx__menu__allergen--title
+  .vlx__menu__allergen-item
+  .vlx_meuu__allergen--text
 
 #### Menu Category Section
 
@@ -149,7 +150,7 @@
   .vlx__contact__location--address
   .vlx__contact__location__hours--list
   .vlx__contact__location__hours--item
-  .vlx__contact__location__contactInfo
+  .vlx__contact__location--contactInfo
     .vlx__contact__location__contactInfo--email
     .vlx__contact__location__contactInfo--phone
 
@@ -175,11 +176,11 @@
 
 ##### Job Post message section
 
-  .vlx__career__jobPost
-  .vlx__career__jobPost--header
-  .vlx__career__jobPost__header--title
+  .vlx__career
+  .vlx__career--header
+  .vlx__career__header--title
   <!-- empty p tag -->
-  .vlx__career__jobPost__header--text
+  .vlx__career__header--text
 
 ##### Job Post Listing Section
 
@@ -201,6 +202,6 @@
 
 #### Job Apply section
 
-  .vlx__career--apply
+  .vlx__career__apply
   .vlx__career__apply--title
   .vlx__career__apply--text

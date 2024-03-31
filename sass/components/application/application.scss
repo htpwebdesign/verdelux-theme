@@ -1,0 +1,15 @@
+.vlx__career__application {
+  // border-bottom: 0.125rem solid #274e13;
+  background-color: $color-tan-bg;
+  margin: 1rem;
+  border-radius: 0.9375rem;
+}
+
+@media (min-width: 43.75rem) {
+  .vlx__career__application {
+    max-width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3rem;
+  }
+}

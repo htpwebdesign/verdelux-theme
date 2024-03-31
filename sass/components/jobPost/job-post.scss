@@ -1,0 +1,78 @@
+.vlx__career__jobPost--listing {
+  margin: 1rem auto;
+}
+
+.vlx__career__jobPost--post {
+  background-color: #ded7c9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0rem auto 2.2rem;
+  padding: 1rem;
+  border-radius: 0.9375rem;
+}
+
+// .vlx__career__jobPost__post--header {}
+
+.vlx__career__jobPost__post--title {
+  margin: 0rem;
+}
+
+.vlx__career__jobPost__post--location {
+  margin-top: 0rem;
+}
+
+.vlx__career__jobPost__post--description {
+  padding: 0.7rem;
+}
+
+.vlx__career__jobPost__post--description p > b {
+  display: block;
+  width: max-content;
+  text-align: center;
+  margin: 0rem auto 0.7rem;
+  padding: 0.5rem;
+  border-bottom: 0.125rem solid #274e13;
+}
+
+.vlx__career__jobPost__post--description p {
+  text-align: left;
+}
+
+.vlx__career__jobPost__post--description ul {
+  list-style: inside;
+  text-align: left;
+}
+
+// Media Queries
+@media (min-width: 53.125rem) {
+  .vlx__career__jobPost--post {
+    max-width:85%;
+  }
+}
+
+@media (min-width: 64em) {
+  .vlx__career__jobPost__post--description ul li {
+    width: 43.75rem;
+    text-align: left;
+    margin: 0rem auto 0.5rem;
+  }
+
+  .vlx__career__jobPost__post--description p:nth-child(9),
+  .vlx__career__jobPost__post--description p:nth-child(10),
+  .vlx__career__jobPost__post--description p:nth-child(11),
+  .vlx__career__jobPost__post--description p:nth-child(12) {
+    text-align: center;
+  }
+
+  .vlx__career__jobPost__post--description p:nth-child(13) {
+    margin-top: 3rem;
+  }
+
+  .vlx__career__jobPost__post--description p,
+  .vlx__career__jobPost__post--description ul li {
+    // padding: 1rem;
+  }
+}
