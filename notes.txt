@@ -7,3 +7,13 @@ empty P tag in the career section
 */
 
 add a selected item click event for each job post listing
+
+making the allergen legend to the side of the menu item display
+
+empyty p tags in the careers description
+
+making new acf field for each section within the job post description
+
+making the allergen symbols readable by sreen readers
+
+removing the <br> from the afc and adding it to the code

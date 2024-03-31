@@ -28,7 +28,9 @@ get_header();
 
 		$args = array(
 			'post_type' => 'vdx-location',
-			'posts_per_page' => -1
+			'posts_per_page' => -1,
+			'orderby' => 'menu_order',
+			'order' => 'ASC'
 		);
 		$location_query = new WP_Query($args);
 
