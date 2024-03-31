@@ -72,6 +72,8 @@ get_header();
                 </article>
             </section>
 
+            
+
             <section class="vlx-location-section vlx__home__locations">
                 <h2 class=" vlx__home__location--title">Locations</h2>
                 <section class="vlx-location-card">
@@ -113,7 +115,9 @@ get_header();
                                 if (isset($fields['location_name_'])) {
                                     $location_name = $fields['location_name_'];
                                     echo '<div class="location-name">';
-                                    echo '<h3 class="vlx__home__locations--name">' . $location_name . '</h3>';
+                                    // Get the permalink for page ID 26
+                                    $page_permalink = get_permalink(26);
+                                    echo '<h3 class="vlx__home__locations--name"><a href="' . esc_url($page_permalink) . '">' . $location_name . '</a></h3>';
                                     echo '</div>';
                                 }
 

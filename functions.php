@@ -181,9 +181,34 @@ function verdelux_theme_scripts()
 }
 add_action('wp_enqueue_scripts', 'verdelux_theme_scripts');
 
+// Load in custom login styles and scripts
+function vdx_login_stylesheet() {
+	
+    // CSS Styles
+    wp_enqueue_style( 
+		'custom-login', // unique handle
+		get_stylesheet_directory_uri() . '/style-login.css', // URL path
+		array(), // dependencies
+		_S_VERSION, // version
+	);
+
+}
+add_action( 'login_enqueue_scripts', 'vdx_login_stylesheet' );
+
+// Custom login logo URL
+function vdx_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'vdx_login_logo_url' );
+
+// Custom login URL title
+function vdx_login_logo_url_title() {
+    return 'Verdelux | Casually elegant laid back vegetarian restaurants in the heart of the city';
+}
+add_filter( 'login_headertext', 'vdx_login_logo_url_title' );
+
 
 // Add google api key for ACF
-
 function google_api_acf_init($api)
 {
 
@@ -191,8 +216,6 @@ function google_api_acf_init($api)
 	return $api;
 }
 add_filter('acf/fields/google_map/api', 'google_api_acf_init');
-
-
 
 /**
  * Implement the Custom Header feature.

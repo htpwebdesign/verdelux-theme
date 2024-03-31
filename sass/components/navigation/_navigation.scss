@@ -7,6 +7,11 @@
 	position: relative;
 }
 
+.site-header ul {
+	list-style-type: none;
+	display: none;
+}
+
 .site-branding {
 	width: 12rem;
 	position: static;
@@ -35,8 +40,6 @@
 }
 
 ul {
-	display: none;
-	list-style: none;
 	margin: 0;
 	padding-left: 0;
 	gap: 1rem;
@@ -50,6 +53,7 @@ ul {
 	flex-direction: column;
 	width: 100%;
 	margin: 0;
+	padding: 1rem;
 }
 
 ul ul {
@@ -155,6 +159,10 @@ a.focus {
 	top: 1rem;
 }
 
+.page-id-18 .nav-menu {
+	display: none;
+}
+
 .page-id-18 .main-navigation.toggled {
 	z-index: 11;
 }
@@ -231,6 +239,7 @@ a.focus {
 		position: static;
 	}
 
+
 	.menu-toggle {
 		display: none;
 	}
@@ -240,19 +249,28 @@ a.focus {
 	}
 
 	.main-navigation .menu-menu-1-container {
-		top: 2rem;
+		top: 0.5rem;
 		margin: 0 1rem 0 0;
 	}
 
 	.main-navigation .menu-menu-1-container .menu {
 		position: absolute;
-		top: 1.75rem;
+		top: 0;
 		right: 0;
 		z-index: 30000;
 		width: fit-content;
-		margin: 0;
+		margin-top: 1rem;
 		display: flex;
 		flex-direction: row;
+	}
+
+	.nav-menu a:hover {
+		background-color: $color_accent;
+		color: #fff;
+	}
+
+	.page-id-18 .site-header {
+		padding: 0;
 	}
 
 	.page-id-18 .main-navigation .menu-menu-1-container .menu {
@@ -260,6 +278,10 @@ a.focus {
 		background-color: $color_tan-bg;
 		padding: 1rem;
 		font-size: 1.5rem;
+	}
+
+	.page-id-18 .main-navigation .menu-menu-1-container {
+		top: 2rem;
 	}
 
 	.page-id-18 .header-content svg {
@@ -297,6 +319,10 @@ a.focus {
 		width: 15rem;
 		display: flex;
 		justify-content: center;
+	}
+
+	.page-id-18 #cta:hover {
+		background-color: $color_accent;
 	}
 
 	@media screen and (min-width: 80em) {
