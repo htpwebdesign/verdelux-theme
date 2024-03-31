@@ -24,26 +24,28 @@ get_header();
 		the_post();
 		get_template_part('template-parts/content', 'page');
 	?>
-
+	
 		<section class="vlx__about__chef about-chef">
-
 			<?php
 			if (function_exists('get_field')) {
 
 				if (get_field('title')) {
 					echo '<h2 class="vlx__about__chef--title">' . get_field('title') . '</h2>';
 				}
-
+				echo '<div class="vlx__about__chef--content">';
 				if (get_field('chef_image')) {
 					echo wp_get_attachment_image(
 						get_field('chef_image'),
-						'medium'
+						'large'
 					);
 				}
-
+				
 				if (get_field('chef_about')) {
-					echo '<p class=="vlx__about__chef--text">' . get_field('chef_about') . '</p>';
+					echo '<div class="vlx__about__text--container">'; //flex container
+					echo '<p class="vlx__about__chef--text">' . get_field('chef_about') . '</p>';
+					echo '</div>'; // Close
 				}
+				echo '</div>';
 			}
 			?>
 		</section>
