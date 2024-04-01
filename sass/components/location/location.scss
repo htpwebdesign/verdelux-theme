@@ -1,0 +1,79 @@
+/***** Styling for location on contact page *****/
+
+.vlx__contact--location {
+  // background-color: blue;
+  margin: 0.5rem;
+  border-bottom: 0.125rem solid $color-button-bg;
+}
+
+.vlx__contact__location--locationTitle {
+  text-align: center;
+
+  b {
+    display: block;
+  }
+}
+
+.vlx__contact__location--address {
+  text-align: center;
+  margin: 0rem auto 1rem;
+  font-style: normal;
+  max-width: 20.625rem;
+}
+
+.vlx__contact__location__hours--list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  row-gap: 0.9rem;
+}
+
+.vlx__contact__location__hours--item {
+  margin: 0rem auto;
+  text-align: left;
+  width: 50%;
+}
+.vlx__contact__location--contactInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+// Media Queries *******
+@media (min-width: 25em) { //400px
+  .vlx__contact__location__hours--list {
+    flex-direction: row;
+  }
+
+  .vlx__contact__location__hours--item {
+    text-align: center;
+  }
+}
+
+@media (min-width: 43.75em) { //700px
+  .vlx__contact__location__hours--list {
+    max-width: 43.75rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media (min-width: 50rem) { //800px
+  .vlx__contact--location .acf-map {
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
+
+@media (min-width: 64em) { //1024px
+  .vlx__contact--location .acf-map {
+    max-width: 70%;
+    height: 31.25rem;
+  }
+}

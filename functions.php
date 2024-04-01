@@ -47,7 +47,7 @@ function verdelux_theme_setup()
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
 	add_theme_support('post-thumbnails');
-
+    
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
@@ -163,15 +163,15 @@ function verdelux_theme_scripts()
 	if (is_page($page = 'contact')) {
 		wp_enqueue_script('googleMaps', get_template_directory_uri() . '/js/googleMaps.js', array('googleMapsKey', 'jquery'), '1.0.0', true);
 		wp_enqueue_script('googleMapsKey', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyAgKjLxZAbjdoqpa8zcmIMhu53vA6h9xYU&callback=Function.prototype', array(), '1.0', true);
-		wp_enqueue_style('google-maps', get_template_directory_uri() . './google-maps.css');
+		wp_enqueue_style('google-maps', get_template_directory_uri() . '/google-maps.css');
 	}
-	if(is_page($page = 'menu')){
-	wp_enqueue_style('slick-css', get_template_directory_uri() . '/slick/slick.css');
-	wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css');
+	if (is_page($page = 'menu')) {
+		wp_enqueue_style('slick-css', get_template_directory_uri() . '/slick/slick.css');
+		wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/slick/slick-theme.css');
 
-	wp_enqueue_script('slick-js', get_template_directory_uri() . '/slick/slick.js', array('jquery'), '1.0', true);
-	wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery', 'slick-js'), '1.0', true);
-	wp_enqueue_script('menu-tab', get_template_directory_uri() . '/js/menu-tab.js');
+		wp_enqueue_script('slick-js', get_template_directory_uri() . '/slick/slick.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery', 'slick-js'), '1.0', true);
+		wp_enqueue_script('menu-tab', get_template_directory_uri() . '/js/menu-tab.js');
 	}
 
 
@@ -181,9 +181,34 @@ function verdelux_theme_scripts()
 }
 add_action('wp_enqueue_scripts', 'verdelux_theme_scripts');
 
+// Load in custom login styles and scripts
+function vdx_login_stylesheet() {
+	
+    // CSS Styles
+    wp_enqueue_style( 
+		'custom-login', // unique handle
+		get_stylesheet_directory_uri() . '/style-login.css', // URL path
+		array(), // dependencies
+		_S_VERSION, // version
+	);
+
+}
+add_action( 'login_enqueue_scripts', 'vdx_login_stylesheet' );
+
+// Custom login logo URL
+function vdx_login_logo_url() {
+    return home_url();
+}
+add_filter( 'login_headerurl', 'vdx_login_logo_url' );
+
+// Custom login URL title
+function vdx_login_logo_url_title() {
+    return 'Verdelux | Casually elegant laid back vegetarian restaurants in the heart of the city';
+}
+add_filter( 'login_headertext', 'vdx_login_logo_url_title' );
+
 
 // Add google api key for ACF
-
 function google_api_acf_init($api)
 {
 
@@ -191,8 +216,6 @@ function google_api_acf_init($api)
 	return $api;
 }
 add_filter('acf/fields/google_map/api', 'google_api_acf_init');
-
-
 
 /**
  * Implement the Custom Header feature.
@@ -290,7 +313,3 @@ function vdx_change_testimonial_title($title, $post_type)
 	return $title;
 }
 add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
-
-
-
-

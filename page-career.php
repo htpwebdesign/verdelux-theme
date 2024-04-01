@@ -25,14 +25,14 @@ get_header();
 		get_template_part('template-parts/content', 'page');
 	?>
 
-
-		<!-- Job Post section -->
+		<!-- Career header -->
 		<section class="vlx__career">
 			<header class="vlx__career--header">
 				<h2 class="vlx__career__header--title"><?php the_field('join_team') ?></h2>
 				<p class="vlx__career__header--text"><?php the_field('intro_message') ?></p>
 			</header>
 
+			<!-- Job Post section -->
 			<section class="vlx__career__jobPost--listing">
 				<?php
 				$args = array(
@@ -95,6 +95,7 @@ get_header();
 			?>
 		</section>
 
+		<!-- Apply with Us section -->
 		<section class="vlx__career__apply">
 			<h3 class="vlx__career__apply--title"><?php the_field('apply_title') ?></h3>
 			<p class="vlx__career__apply--text"><?php the_field('apply_text') ?></p>

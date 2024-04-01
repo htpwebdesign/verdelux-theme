@@ -1,0 +1,107 @@
+/* VARIABLES */
+:root{ 
+    /* colors */
+    --primary: #fff;
+    --secondary: #274E13;
+    --tertiary: #000;
+    --accent: #452525;
+    --accent-bg: #DED7C9;
+    /* fonts */
+    --main-font: "Work Sans", sans-serif;
+}
+
+body.login div#login h1 a,
+body.login div.login h1 a {
+    background-image: url('images/login-logo.svg');
+    height: 6rem;
+    width: 8rem;
+    background-size: 8rem 8rem;
+    background-repeat: no-repeat;
+}
+
+body.login {
+    background-color: var(--accent-bg);
+    font-family: var(--main-font);
+}
+
+body.login a {
+    color: var(--secondary);
+}
+
+body.login a:hover {
+    color: var(--accent);
+}
+
+body.login div#login #login-message,
+body.login div#login .notice {
+    border: var(--secondary) 0.125rem solid;
+    border-left: 0.25rem solid var(--secondary);
+    background-color: var(--primary);
+    border-radius: 0.75rem;
+}
+
+body.login div#login form#loginform,
+body.login div#login form#lostpasswordform {
+    border: solid var(--secondary);
+    border-radius: 10%;
+    
+}
+
+body.login div#login form#loginform input,
+body.login div#login form#loginform button.button.wp-hide-pw,
+body.login div#login form#lostpasswordform input,
+body.login div#login form#lostpasswordform button.button {
+    color: var(--tertiary);
+}
+
+body.login div#login form#loginform input,
+body.login div#login form#lostpasswordform input {
+    border: var(--secondary) 0.0625rem solid;
+    border-radius: 0.3125rem;
+}
+
+body.login div#login form#loginform button.button.wp-hide-pw,
+body.login div#login form#lostpasswordform button.button {
+    color: var(--secondary);
+}
+
+body.login div#login form#loginform p.forgetmenot input#rememberme:checked:before {
+    content: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%23452525%27%2F%3E%3C%2Fsvg%3E);
+}
+
+body.login div#login form#loginform p.forgetmenot input#rememberme {
+    border: var(--secondary) 0.0625rem solid;
+}
+
+
+body.login div#login form#loginform input:focus,
+body.login div#login form#loginform button.button.wp-hide-pw:focus,
+body.login div#login form#lostpasswordform input:focus,
+body.login div#login form#lostpasswordform button.button:focus,
+body.login a:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 0 1px var(--secondary);
+}
+
+body.login div#login form#loginform p.submit input#wp-submit,
+body.login div#login form#lostpasswordform p.submit input#wp-submit {
+    color: var(--primary);
+    font-weight: 700;
+    background:
+        var(--secondary);
+}
+
+body.login div#login form#loginform p.submit input#wp-submit:hover,
+body.login div#login form#lostpasswordform p.submit input#wp-submit:hover {
+    background: var(--accent);
+}
+
+body.login div#login p#nav a,
+body.login div#login p#backtoblog a {
+    color: var(--light75);
+}
+
+body.login div#login p#nav a:hover,
+body.login div#login p#backtoblog a:hover {
+    color: var(--light);
+}

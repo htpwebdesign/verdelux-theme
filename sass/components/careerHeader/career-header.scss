@@ -1,0 +1,22 @@
+
+.vlx__career__header--title {
+   text-align: center;
+   margin: 0rem;
+}
+
+// empty elements
+.vlx__career--header p:nth-child(5),
+.vlx__career__header--text
+{
+display: none;
+}
+
+.vlx__career--header p {
+   width: 100%;
+}
+
+@media(min-width: 50em) {
+   .vlx__career--header p {
+      max-width: 34.875rem;
+   }
+}

@@ -13,7 +13,7 @@
 
 ## CSS
 
-#### Main
+### Main
 
   .vlx__main
 
@@ -31,6 +31,14 @@
         .vlx__footer--navRight/menu-social-media-menu-container
       .vlx__footer--navRight/menu-social-media-menu-container(div)/menu-social-media-menu(ul)
         .vlx__footer--navRight/menu-social-media-menu-container(div)/menu-social-media-menu(ul)/menu-item(li)
+
+### 404 PAGE CLASSES
+
+  .vlx__404
+  .vlx__404--header
+  .vlx__404__header--title
+  .vlx__404--content
+  .vlx__404__content--msg
 
 ### HOME PAGES CLASSES
 
@@ -79,7 +87,7 @@
     .vlx__home__testimonials--review/img
   .vlx__home_testimonials--reviewTitle
   .vlx__home_testimonials--reviewContent
-  .vlx__home_testimonials--reviewRating
+  .vlx__home_testimonials--reviewRating.
 
 ### MENU PAGE CLASSESS
 
@@ -97,9 +105,10 @@
 #### Menu allergen Section
 
   .vlx__menu--allergen
-  .vlx__menu__allergen--title
   .vlx__menu__allergen--container
-  .vlx_meu__allergen--text
+  .vlx__menu__allergen--title
+  .vlx__menu__allergen-item
+  .vlx_meuu__allergen--text
 
 #### Menu Category Section
 
@@ -141,7 +150,7 @@
   .vlx__contact__location--address
   .vlx__contact__location__hours--list
   .vlx__contact__location__hours--item
-  .vlx__contact__location__contactInfo
+  .vlx__contact__location--contactInfo
     .vlx__contact__location__contactInfo--email
     .vlx__contact__location__contactInfo--phone
 
@@ -167,11 +176,11 @@
 
 ##### Job Post message section
 
-  .vlx__career__jobPost
-  .vlx__career__jobPost--header
-  .vlx__career__jobPost__header--title
+  .vlx__career
+  .vlx__career--header
+  .vlx__career__header--title
   <!-- empty p tag -->
-  .vlx__career__jobPost__header--text
+  .vlx__career__header--text
 
 ##### Job Post Listing Section
 
@@ -193,6 +202,6 @@
 
 #### Job Apply section
 
-  .vlx__career--apply
+  .vlx__career__apply
   .vlx__career__apply--title
   .vlx__career__apply--text

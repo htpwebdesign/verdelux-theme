@@ -52,18 +52,16 @@ get_header();
 				'meta_key' => 'menu_order',
 
 			));
-			echo '<ul class="vlx__menu__tabs--list">';
+			echo '<ul class="vlx__menu__tabs--list" aria-label="Menu category tabs">';
 			foreach ($terms as $term) {
 				echo '<li class="vlx__menu__tabs--item">';
 				echo '<a class="vlx__menu__tabs--link menu-tab" data-filter="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a>';
 				echo '</li>';
 			}
 			echo '</ul>';
-
 			?>
 
 		</section>
-
 
 		<?php
 		//allergen symbols legend
@@ -77,11 +75,13 @@ get_header();
 			"Alcohol" => 'images/alcohol'
 		);
 
+		echo '<div class="vlx__menu__allergen--container">';
 		foreach ($allergens as $allergen => $image) {
-			echo '<div class="vlx__menu__allergen--container">';
+			echo '<div class="vlx__menu__allergen--item">';
 			echo '<p class="vlx__menu__allergen--text">' . $allergen . '</p>' . get_template_part($image);
 			echo '</div>';
 		}
+		echo '</div>';
 
 		echo '</section>';
 
@@ -111,10 +111,8 @@ get_header();
 					echo '<section id="' . esc_html($term->slug) . '" class="vlx__menu__category menu-contents">';
 					echo '<h2 class="vlx__menu__category--title">' . esc_html($term->name) . '</h2>';
 
-
 					while ($query->have_posts()) {
 						$query->the_post();
-
 
 						if (function_exists('get_field')) {
 							// $fields = get_fields();
@@ -126,12 +124,12 @@ get_header();
 							$title = get_the_title();
 							echo '<p class="vlx__menu__category__item--text">' . esc_html($title) . '</p>';
 
-
 							//Ingredients
 							if (function_exists('get_field')) {
 								$dish_ingredients = get_field('dish_ingredients');
-								echo $dish_ingredients;
+								echo '<p>' . $dish_ingredients . '</p>';
 							}
+
 							//Allergen symbols
 							$dish_legend = get_field('dish_legend');
 							if ($dish_legend) : ?>
@@ -140,7 +138,6 @@ get_header();
 										$url = 'images/' . $legend;
 										get_template_part($url);
 									?>
-
 
 									<?php endforeach; ?>
 								</ul>

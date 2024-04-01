@@ -5,10 +5,10 @@ input[type="button"],
 input[type="reset"],
 input[type="submit"] {
 	border: 1px solid;
-	border-color: $color__border-button;
+	//border-color: $color__border-button;
 	border-radius: 3px;
-	background: $color__background-button;
-	color: rgba(0, 0, 0, 0.8);
+	background: $color-button-bg;
+	color: #ffffff;
 	line-height: 1;
 	padding: 0.6em 1em 0.4em;
 
@@ -26,4 +26,10 @@ input[type="submit"] {
 	background-color: $color_button_bg;
 	border-radius: 0;
 }
+
+// Career Page - Job Posting Btns
+.page-id-28 .gform_page{
+	border-radius: 0.75rem;
+}
+
 

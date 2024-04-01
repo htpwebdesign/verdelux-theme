@@ -1,0 +1,87 @@
+//Home Page - About Section 
+.page-id-18 .vlx__home__about .vlx__home__about__article {
+ 
+    img {
+        margin: 2rem auto; 
+        max-width: 100%; 
+    }
+  
+    p {
+        margin: 1rem auto; 
+        margin-top: 2rem;
+        text-align: center; 
+    }
+
+    a {
+        width: fit-content;
+        margin: 1rem auto; 
+        text-align: center;
+    }
+}
+
+@media (min-width: 37.5em) { // 600px/16px
+    .page-id-18 .vlx__home__about .vlx__home__about__article {
+        display: flex;
+        flex-direction: row; 
+
+        img {
+            max-width: 40%; 
+            margin-right: 2rem;
+        }
+
+        p {
+            margin: 1rem auto; 
+            align-content: center;
+            padding: 1rem;
+        }
+    }
+}
+
+@media (min-width: 59.25em) { // 948px/16px
+    .page-id-18 .vlx__home__about .vlx__home__about__article {
+        p {
+            font-size: 1.20rem;
+        }
+
+        a {
+            margin-top: 2rem; 
+        }
+    }
+}
+
+
+//About Page - 'Our Story' section 
+.page-id-24 .vlx__about__chef {
+
+    margin: 0 1rem;
+    
+    .vlx__about__chef--title {
+        margin-bottom: 1rem; 
+        text-align: center;
+    }
+    
+    .vlx__about__text--container {
+        max-width: 100%;
+    }
+
+    @media (min-width: 37.5em) { // 600px/16px
+        
+        .vlx__about__chef--title {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .vlx__about__chef--content {
+            display: flex; 
+            flex-wrap: wrap; // allow items to wrap on smaller screens
+            justify-content: center; // center the items horizontally
+            gap: 1rem; 
+        }
+    
+        .vlx__about__text--container {
+            max-width: 50%;
+            flex: 1 0 auto; // allow the text to grow and shrink as needed
+            text-align: left; 
+        } 
+    }
+}
