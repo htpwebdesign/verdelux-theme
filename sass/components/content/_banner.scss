@@ -4,7 +4,8 @@
     border-bottom:  0.31rem solid #452525;
 
     img {
-        height: 98vh;
+        //height: 98vh;
+        object-fit: cover;
     }
     
 }
@@ -15,7 +16,8 @@
     border-bottom:  0.31rem solid #452525; 
 
     @media (min-width: 37.5em) { // 600px/16px
-    height: 90vh;
+    //height: 90vh;
+    object-fit: cover;
     }
 }
 
@@ -25,7 +27,8 @@
     border-bottom:  0.31rem solid #452525; 
 
     @media (min-width: 37.5em) { // 600px/16px
-    height: 90vh;
+    //height: 90vh;
+    object-fit: cover;
     }
 }
 
@@ -35,7 +38,8 @@
     border-bottom:  0.31rem solid #452525; 
 
     @media (min-width: 37.5em) { // 600px/16px
-    height: 90vh;
+    //height: 90vh;
+    object-fit: cover;
     }
 }
 
@@ -45,7 +49,8 @@
     border-bottom:  0.31rem solid #452525; 
 
     @media (min-width: 37.5em) { // 600px/16px
-    height: 90vh;
+    //height: 90vh;
+    object-fit: cover;
     }
 }
 
