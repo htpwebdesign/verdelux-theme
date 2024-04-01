@@ -1,0 +1,262 @@
+.vlx__about__team--content{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+    gap: 1.25rem;
+
+   
+
+    .vlx__about__team-member-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin-bottom: 1.25rem;
+        margin-right: 1.25rem;
+
+        &:nth-child(even) {
+            margin-right: 0;
+        }
+       
+    }
+}
+@media screen and (min-width: 37.5em){
+    .vlx__about__team--content{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(45%, 1fr)); 
+        gap: 1.25rem;
+        justify-content: space-between; 
+       
+    }
+    .vlx__about__team-member-info {
+        margin-bottom: 1.25rem;
+        padding: 1rem;
+    }
+    .vlx__about__team__content--locationTitle {
+        text-align: center;
+        grid-column: 1 / -1;
+    }
+  
+   
+}
+@media screen and (min-width: 56.25em){
+    .vlx__about__team--content {
+        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr)); 
+    }
+}
+@media screen and (min-width: 56.25em) and (max-width: 75em) {
+    .vlx__about__team--content {
+        grid-template-columns: repeat(auto-fit, minmax(30%, 1fr)); /* Three columns for screens up to 900px */
+    }
+}
+
+// Menu Page //
+#appetizers,
+#chefs-specials,
+#desserts,
+#pizza,
+#red-wine,
+#soups-and-salads,
+#white-wine {
+    .vlx__menu__category--item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-bottom: 1.25rem;
+        padding: 1rem 5rem;
+    }
+
+    .vlx__menu__category--title {
+        text-align: center;
+        margin-bottom: 1.25rem;
+    }
+
+    .vlx__menu__category__item--allergen {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0.5rem;
+        margin-left: -1.5rem; 
+    }
+
+    .vlx__menu__category__item--allergen svg {
+        width: 3rem;
+        height: 2rem;
+        margin-right: 0.5rem;
+        align-self: flex-start;
+        margin-left: -1rem; 
+    }
+}
+
+
+
+
+
+
+
+
+// Appetizers //
+
+// #appetizers{
+
+//     .vlx__menu__category--item{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         text-align: center;
+//         margin-bottom: 1.25rem;
+//         padding: 1rem 5rem;
+//     }
+//     .vlx__menu__category--title {
+//         text-align: center; 
+//         margin-bottom: 1.25rem; 
+//     }
+//     // .vlx__menu__category__item--allergen svg{
+//     //     display: inline-block;
+//     //     // align-items: center;
+//     //     // justify-content: center;
+//     //     vertical-align: middle;
+//     //     margin: auto;
+//     //     width: 3rem;
+//     //     height: 2rem;
+       
+//     // }
+  
+//     .vlx__menu__category__item--allergen {
+//         display: flex;
+//         // justify-content: center; /* Center horizontally */
+//         align-items: center; /* Center vertically */
+//         margin-bottom: 0.5rem;
+//         margin-left: -1.5rem;
+//     }
+    
+//     .vlx__menu__category__item--allergen svg {
+//         width: 3rem;
+//         height: 2rem;
+//         margin-right: 0.50rem;
+//         align-self: flex-start;
+//         margin-left: -1rem 2rem;
+//         // margin-top: -6rem;
+//         // margin-left: -1rem;
+        
+//     }
+// }
+// // Chefs specials //
+// #chefs-specials{
+
+//     .vlx__menu__category--item{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         text-align: center;
+//         margin-bottom: 1.25rem;
+//         padding: 1rem 5rem;
+//     }
+//     .vlx__menu__category--title {
+//         text-align: center; 
+//         margin-bottom: 1.25rem; 
+//     }
+// }
+
+// // Desserts //
+// #desserts{
+
+//     .vlx__menu__category--item{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         text-align: center;
+//         margin-bottom: 1.25rem;
+//         padding: 1rem 5rem;
+//     }
+//     .vlx__menu__category--title {
+//         text-align: center; 
+//         margin-bottom: 1.25rem; 
+//     }
+// }
+
+// // Pizza //
+// #pizza{
+
+//     .vlx__menu__category--item{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         text-align: center;
+//         margin-bottom: 1.25rem;
+//         padding: 1rem 5rem;
+//     }
+//     .vlx__menu__category--title {
+//         text-align: center; 
+//         margin-bottom: 1.25rem; 
+//     }
+// }
+
+// // Red Wine //
+// #red-wine{
+
+//     .vlx__menu__category--item{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         text-align: center;
+//         margin-bottom: 1.25rem;
+//         padding: 1rem 5rem;
+//     }
+//     .vlx__menu__category--title {
+//         text-align: center; 
+//         margin-bottom: 1.25rem; 
+//     }
+// }
+
+// // Soups and Salads //
+// #soups-and-salads{
+
+//     .vlx__menu__category--item{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         text-align: center;
+//         margin-bottom: 1.25rem;
+//         padding: 1rem 5rem;
+//     }
+//     .vlx__menu__category--title {
+//         text-align: center; 
+//         margin-bottom: 1.25rem; 
+//     }
+// }
+
+// // White Wine //
+// #white-wine{
+
+//     .vlx__menu__category--item{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         text-align: center;
+//         margin-bottom: 1.25rem;
+//         padding: 1rem 5rem;
+//     }
+//     .vlx__menu__category--title {
+//         text-align: center; 
+//         margin-bottom: 1.25rem; 
+//     }
+// }
+
+
+
+
+
+    
+
+
+
+
+   
+
+
+    
+
+
+ 
