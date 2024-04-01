@@ -96,23 +96,38 @@ get_header();
 					// output Content
 					while ($query->have_posts()) {
 						$query->the_post();
-
 						if (function_exists('get_field')) {
 							//output team member image
+							// if (get_field('member_image_')) {
+								
+							// 	echo wp_get_attachment_image(
+							// 		get_field('member_image_'),
+							// 		'medium'
+								
+							// 	);
+							// }
 							if (get_field('member_image_')) {
-								echo wp_get_attachment_image(
-									get_field('member_image_'),
-									'medium'
-								);
+							
+								echo '<div class="vlx__about__team-member-info">';
+								echo wp_get_attachment_image(get_field('member_image_'), 'medium');
+								// echo '</div>';
 							}
 
+						
+
+
 							//output team member name
+						
 							echo '<h4 class="vlx__about__team__content--name">' . esc_html(get_the_title()) . '</h4>';
 
 							//output job title 
 							if (get_field('position')) {
 								echo '<p class="vlx__about__team__content--text">' . esc_html(get_field('position')) . '</p>';
 							}
+							
+
+								echo '</div>';
+							
 						}
 					}
 					wp_reset_postdata();
