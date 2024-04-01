@@ -23,6 +23,9 @@
 					);
 				?>
 			</nav>
+			<section class="vlx__footer__section footer-logo">
+    			<?php include get_template_directory() . '/images/logo.php'; ?>
+			</section>
 			<nav class="vlx__footer--navRight footer-navigation" id="footer-navigation" aria-label="Footer Pages Navigation">
 				<?php
 					wp_nav_menu(
