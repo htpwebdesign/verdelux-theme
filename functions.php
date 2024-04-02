@@ -313,3 +313,32 @@ function vdx_change_testimonial_title($title, $post_type)
 	return $title;
 }
 add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
+
+
+/**
+ * New dashboard widget.
+ */
+function admin_dashboard_widget()
+{
+	wp_add_dashboard_widget(
+		'custom_dashboard_widget', //slug id
+		'Welcome to Verdelux!', //title
+		'dashboard_widgets_display' //display function 
+	);
+}
+add_action('wp_dashboard_setup', 'admin_dashboard_widget');
+ 
+//display function
+function dashboard_widgets_display()
+{
+	 echo "<p>Our passion for vegetarian cuisine is evident in every bite, as we bring together the freshest ingredients from the local community to create a culinary experience unlike any other.</p>";
+}
+
+
+// function to REMOVE from the dashboard
+//removed widgets: wordpress events&news
+function remove_dashboard_widget()
+{
+	remove_meta_box('dashboard_primary', 'dashboard', 'side');
+}
+add_action('wp_dashboard_setup', 'remove_dashboard_widget');
