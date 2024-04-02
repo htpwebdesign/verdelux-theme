@@ -111,6 +111,7 @@ get_header();
 					echo '<section id="' . esc_html($term->slug) . '" class="vlx__menu__category menu-contents">';
 					echo '<h2 class="vlx__menu__category--title">' . esc_html($term->name) . '</h2>';
 
+					echo '<div class="vlx__menu__category__container">';
 					while ($query->have_posts()) {
 						$query->the_post();
 
@@ -145,6 +146,7 @@ get_header();
 							echo '</article>';
 						}
 					}
+					echo '</div>';
 					echo '</section>';
 				}
 			}

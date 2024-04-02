@@ -108,7 +108,7 @@ get_header();
 							// }
 							if (get_field('member_image_')) {
 							
-								echo '<div class="vlx__about__team-member-info">';
+							echo '<div class="vlx__about__team-member-info">';
 								echo wp_get_attachment_image(get_field('member_image_'), 'medium');
 								// echo '</div>';
 							}
@@ -118,7 +118,7 @@ get_header();
 
 							//output team member name
 						
-							echo '<h4 class="vlx__about__team__content--name">' . esc_html(get_the_title()) . '</h4>';
+								echo '<h4 class="vlx__about__team__content--name">' . esc_html(get_the_title()) . '</h4>';
 
 							//output job title 
 							if (get_field('position')) {
@@ -126,7 +126,7 @@ get_header();
 							}
 							
 
-								echo '</div>';
+							echo '</div>';
 							
 						}
 					}
