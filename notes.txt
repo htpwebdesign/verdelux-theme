@@ -14,6 +14,8 @@ empyty p tags in the careers description
 
 making new acf field for each section within the job post description
 
-making the allergen symbols readable by sreen readers
+making the allergen symbols readable by screen readers
 
 removing the <br> from the afc and adding it to the code
+
+distorted images 
