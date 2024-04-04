@@ -20,8 +20,10 @@
         }
        
     }
- 
-   
+    
+}
+.vlx__about__team h2{
+    text-align: center;
 }
 
 @media screen and (min-width: 37.5em){
@@ -133,7 +135,7 @@
     }
     .vlx__menu__category__container{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
 
     }
 
