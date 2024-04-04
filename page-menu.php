@@ -55,7 +55,7 @@ get_header();
 			echo '<ul class="vlx__menu__tabs--list" aria-label="Menu category tabs">';
 			foreach ($terms as $term) {
 				echo '<li class="vlx__menu__tabs--item">';
-				echo '<a class="vlx__menu__tabs--link menu-tab" data-filter="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</a>';
+				echo '<button class="vlx__menu__tabs--link menu-tab" data-filter="' . esc_attr($term->slug) . '">' . esc_html($term->name) . '</button>';
 				echo '</li>';
 			}
 			echo '</ul>';
