@@ -1,21 +1,18 @@
-.vlx__career{
-    display: flex;
-    flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
-    .vlx__career--header{
-        padding: 1rem;
+.vlx__career {
+  display: flex;
+  flex-direction: column;
+  .vlx__career--header {
+    padding: 1rem;
+  }
+  .vlx__career__header--title {
+    text-align: center;
+  }
 
-    }
-    .vlx__career__header--title{
-        text-align: center;
-    }
-
-    .vlx__career__jobPost--post{
-        padding: 1rem;
-        margin: 1rem;
-        background-color: #DED7C9;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+  .vlx__career__jobPost--post {
+    padding: 1rem;
+    margin: 1rem auto;
+    background-color: #ded7c9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
 }
