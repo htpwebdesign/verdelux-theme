@@ -14,8 +14,6 @@
   border-radius: 0.9375rem;
 }
 
-// .vlx__career__jobPost__post--header {}
-
 .vlx__career__jobPost__post--title {
   margin: 0rem;
 }
@@ -49,7 +47,7 @@
 // Media Queries
 @media (min-width: 53.125rem) {
   .vlx__career__jobPost--post {
-    max-width:85%;
+    max-width: 85%;
   }
 }
 
@@ -69,10 +67,5 @@
 
   .vlx__career__jobPost__post--description p:nth-child(13) {
     margin-top: 3rem;
-  }
-
-  .vlx__career__jobPost__post--description p,
-  .vlx__career__jobPost__post--description ul li {
-    // padding: 1rem;
   }
 }

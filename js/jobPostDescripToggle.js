@@ -1,13 +1,33 @@
 document.addEventListener('DOMContentLoaded', function () {
+
    const buttons = document.querySelectorAll('.view-more');
-   buttons.forEach(function (button) {
+   let selectedItem = null;
+   console.log(buttons)
+
+
+   buttons.forEach(function (button, index) {
+
+
+      const description = button.parentElement.previousElementSibling;
+      description.style.display = 'none';
+
       button.addEventListener('click', function () {
-         const description = this.parentElement.previousElementSibling;
-         if (description.style && description.style.display == 'none') {
-            description.style.display = 'block';
-         } else if (description) {
-            description.style.display = 'none';
+
+
+         if (selectedItem !== null && selectedItem !== index) {
+            buttons[selectedItem].parentElement.previousElementSibling.style.display = 'none';
          }
+         
+         if (description.style.display === 'none' || selectedItem !== index) {
+            description.style.display = 'block';
+            button.innerText = 'Close Job Post';
+            selectedItem = index;
+         } else {
+            description.style.display = 'none';
+            button.innerText = 'View Job Posting'
+            selectedItem = null;
+         }
+
       });
    });
-})
+});

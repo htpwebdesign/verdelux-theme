@@ -211,7 +211,9 @@ a.focus {
 .page-id-18 #cta {
 	position: absolute;
 	bottom: 2rem;
-	left: 8rem;
+	right: 0;
+	left: 0;
+	margin: 0 auto;
 	background: $color_titles;
 	text-decoration: none;
 	color: #fff;
@@ -228,11 +230,6 @@ a.focus {
 }
 
 /* Responsive styles */
-@media screen and (min-width: 36em) {
-	.page-id-18 #cta {
-		left: 14rem;
-	}
-}
 
 @media screen and (min-width: 48em) {
 	.site-header {
@@ -313,7 +310,6 @@ a.focus {
 	}
 
 	.page-id-18 #cta {
-		left: 17rem;
 		font-size: 1.5rem;
 		width: 15rem;
 		display: flex;
@@ -332,7 +328,6 @@ a.focus {
 		}
 
 		.page-id-18 #cta {
-			left: 34rem;
 			font-size: 2rem;
 		}
 
@@ -341,9 +336,6 @@ a.focus {
 				left: 50rem;
 			}
 
-			.page-id-18 #cta {
-				left: 50rem;
-			}
 		}
 	}
 }

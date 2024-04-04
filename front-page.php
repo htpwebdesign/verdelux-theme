@@ -64,11 +64,17 @@ get_header();
                         echo $chef_image_output; // Output the image
                     }
 
-
-                    if (get_field('about_restuarant_')) {
-                        '<p class="vlx__about_p">' . the_field('about_restuarant_') . '</p>';
-                    }
                     ?>
+                    <div class="about-text-section">
+                        <?php
+                        if (get_field('about_restuarant_')) {
+                            '<p class="vlx__about_p">' . the_field('about_restuarant_') . '</p>';
+                        }
+                        
+                        ?>
+                        <a href="<?php echo esc_url(get_permalink(get_page_by_path('about'))); ?>">Read More<span class="screen-reader-text">about us</span></a>
+                    </div>
+
                 </article>
             </section>
 
