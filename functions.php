@@ -345,7 +345,7 @@ function remove_dashboard_widget()
 add_action('wp_dashboard_setup', 'remove_dashboard_widget');
 
 
-// Remove admin menu links for non-Administrator accounts
+// Remove admin menu links for non-Administrator accounts//
 function fwd_remove_admin_links() {
 	if ( !current_user_can( 'manage_options' ) ) {
 		remove_menu_page( 'edit.php' );           // Remove Posts link
