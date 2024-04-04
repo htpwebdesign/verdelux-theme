@@ -47,7 +47,7 @@ function verdelux_theme_setup()
 		* @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		*/
 	add_theme_support('post-thumbnails');
-    
+
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus(
 		array(
@@ -158,7 +158,6 @@ function verdelux_theme_scripts()
 	wp_enqueue_script('verdelux-theme-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
 	wp_enqueue_script('verdelux-theme-jobPostDescripToggle', get_template_directory_uri() . '/js/jobPostDescripToggle.js', array(), _S_VERSION);
-
 	// check if page is contact page - output the location information 
 	if (is_page($page = 'contact')) {
 		wp_enqueue_script('googleMaps', get_template_directory_uri() . '/js/googleMaps.js', array('googleMapsKey', 'jquery'), '1.0.0', true);
@@ -182,30 +181,32 @@ function verdelux_theme_scripts()
 add_action('wp_enqueue_scripts', 'verdelux_theme_scripts');
 
 // Load in custom login styles and scripts
-function vdx_login_stylesheet() {
-	
-    // CSS Styles
-    wp_enqueue_style( 
+function vdx_login_stylesheet()
+{
+
+	// CSS Styles
+	wp_enqueue_style(
 		'custom-login', // unique handle
 		get_stylesheet_directory_uri() . '/style-login.css', // URL path
 		array(), // dependencies
 		_S_VERSION, // version
 	);
-
 }
-add_action( 'login_enqueue_scripts', 'vdx_login_stylesheet' );
+add_action('login_enqueue_scripts', 'vdx_login_stylesheet');
 
 // Custom login logo URL
-function vdx_login_logo_url() {
-    return home_url();
+function vdx_login_logo_url()
+{
+	return home_url();
 }
-add_filter( 'login_headerurl', 'vdx_login_logo_url' );
+add_filter('login_headerurl', 'vdx_login_logo_url');
 
 // Custom login URL title
-function vdx_login_logo_url_title() {
-    return 'Verdelux | Casually elegant laid back vegetarian restaurants in the heart of the city';
+function vdx_login_logo_url_title()
+{
+	return 'Verdelux | Casually elegant laid back vegetarian restaurants in the heart of the city';
 }
-add_filter( 'login_headertext', 'vdx_login_logo_url_title' );
+add_filter('login_headertext', 'vdx_login_logo_url_title');
 
 
 // Add google api key for ACF
@@ -327,11 +328,11 @@ function admin_dashboard_widget()
 	);
 }
 add_action('wp_dashboard_setup', 'admin_dashboard_widget');
- 
+
 //display function
 function dashboard_widgets_display()
 {
-	 echo "<p>Our passion for vegetarian cuisine is evident in every bite, as we bring together the freshest ingredients from the local community to create a culinary experience unlike any other.</p>";
+	echo "<p>Our passion for vegetarian cuisine is evident in every bite, as we bring together the freshest ingredients from the local community to create a culinary experience unlike any other.</p>";
 }
 
 

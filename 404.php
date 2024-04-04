@@ -20,7 +20,7 @@ get_header();
 
 		<div class="page-content vlx__404--content">
 			<p class="vlx__404__content--msg"><?php esc_html_e('It looks like nothing was found at this location. Click the link below to go back to the home page.', 'verdelux-theme'); ?></p>
-			<a href="<?php the_permalink(18)?>">Go back to home Page</a>
+			<a href="<?php the_permalink(18) ?>">Go back to home Page</a>
 		</div><!-- .page-content -->
 	</section><!-- .error-404 -->
 
