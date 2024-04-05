@@ -11,7 +11,7 @@
 get_header();
 ?>
 
-<main id="primary" class="site-main vlx__main">
+<main id="primary" class="site-main vlx__main_404">
 
 	<section class="error-404 not-found vlx__404">
 		<header class="page-header vlx__404--header">
