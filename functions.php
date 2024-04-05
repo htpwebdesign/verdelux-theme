@@ -352,7 +352,7 @@ add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
  {
 	 echo "<p>Our passion for vegetarian cuisine is evident in every bite, as we bring together the freshest ingredients from the local community to create a culinary experience unlike any other.</p>";
  
-	 echo '<iframe width="100%" height="315" src="https://www.youtube.com/embed/oojxjpfcojw?si=KgETwG8RCU20nxth" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+	 echo '<iframe width="100%" height="315" src="https://www.youtube.com/embed/Z0QIkCIiugg?si=tVJxCmg1jvWwQDMF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
  }
  
 //SECOND Widget Output Function: Navigating Wordpress- Detailed Guide
