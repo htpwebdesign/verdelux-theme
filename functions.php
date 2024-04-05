@@ -317,24 +317,50 @@ add_filter('enter_title_here', 'vdx_change_testimonial_title', 10, 2);
 
 
 /**
- * New dashboard widget.
+ * New dashboard widgets.
+ * Function to declare to ADD the dasboard widget
  */
-function admin_dashboard_widget()
-{
+
+ function admin_dashboard_widget()
+ {
 	wp_add_dashboard_widget(
-		'custom_dashboard_widget', //slug id
-		'Welcome to Verdelux!', //title
-		'dashboard_widgets_display' //display function 
+		 'custom_dashboard_widget', //slug id
+		 'Welcome to Verdelux!', //title
+		 'dashboard_widgets_display' //display function 
 	);
-}
-add_action('wp_dashboard_setup', 'admin_dashboard_widget');
+ 
+	wp_add_dashboard_widget(
+		 'custom_dashboard_widget', //slug id
+		 'Navigating Wordpress', //title
+		 'dashboard_widgets_display' //display function 
+	);
 
-//display function
-function dashboard_widgets_display()
-{
-	echo "<p>Our passion for vegetarian cuisine is evident in every bite, as we bring together the freshest ingredients from the local community to create a culinary experience unlike any other.</p>";
-}
+	wp_add_dashboard_widget(
+		'custom_dashboard_widget_2', //slug id
+		'Navigating Wordpress: A Detailed Guide', //title
+		'dashboard_widgets_display_2' //display function 
+	);
+ }
+ add_action('wp_dashboard_setup', 'admin_dashboard_widget');
+ 
 
+/**
+ * 
+ * Function to MODIFY/DISPLAY content
+ */
+ function dashboard_widgets_display()
+ {
+	 echo "<p>Our passion for vegetarian cuisine is evident in every bite, as we bring together the freshest ingredients from the local community to create a culinary experience unlike any other.</p>";
+ 
+	 echo '<iframe width="100%" height="315" src="https://www.youtube.com/embed/oojxjpfcojw?si=KgETwG8RCU20nxth" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+ }
+ 
+//SECOND Widget Output Function: Navigating Wordpress- Detailed Guide
+function dashboard_widgets_display_2()
+ {
+	 echo '<iframe width="100%" height="315" src="https://www.youtube.com/embed/FgZscfHWcXM?si=6Yd1QijxdwjDJxiS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+ }
+ 
 
 // function to REMOVE from the dashboard
 //removed widgets: wordpress events&news
@@ -343,3 +369,14 @@ function remove_dashboard_widget()
 	remove_meta_box('dashboard_primary', 'dashboard', 'side');
 }
 add_action('wp_dashboard_setup', 'remove_dashboard_widget');
+
+
+
+// Remove admin menu links for non-Administrator accounts//
+function fwd_remove_admin_links() {
+	if ( !current_user_can( 'manage_options' ) ) {
+		remove_menu_page( 'edit.php' );           // Remove Posts link
+    		remove_menu_page( 'edit-comments.php' );  // Remove Comments link
+	}
+}
+add_action( 'admin_menu', 'fwd_remove_admin_links' );
